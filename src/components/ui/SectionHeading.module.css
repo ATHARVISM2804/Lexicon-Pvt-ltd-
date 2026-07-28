@@ -1,0 +1,73 @@
+.head {
+  margin-bottom: clamp(2.75rem, 5vw, 4.5rem);
+}
+
+.eyebrow {
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+  margin: 0 0 1.4rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: 1.5rem 4rem;
+  align-items: end;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  font-weight: 300;
+  line-height: 1.14;
+  letter-spacing: -0.015em;
+  margin: 0;
+  max-width: 16ch;
+}
+
+.intro {
+  margin: 0;
+  color: var(--slate-500);
+  max-width: 44ch;
+}
+
+.center {
+  text-align: center;
+}
+
+.center .row {
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+.center .title,
+.center .intro {
+  max-width: 30ch;
+}
+
+.center .intro {
+  max-width: 52ch;
+}
+
+/* On navy sections the gold eyebrow can run at full brightness. */
+:global(.sectionDark) .eyebrow {
+  color: var(--gold);
+}
+
+:global(.sectionDark) .intro {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+@media (max-width: 860px) {
+  .row {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .title {
+    max-width: 20ch;
+  }
+}

@@ -1,0 +1,40 @@
+.features {
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+.criteria {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.criterion {
+  background: var(--navy-900);
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+}
+
+.criterion dt {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-weight: 400;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+
+.criterion dd {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.97rem;
+  max-width: 44ch;
+}
+
+@media (max-width: 860px) {
+  .criteria {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,229 @@
+.hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--navy-900);
+  color: var(--paper);
+  isolation: isolate;
+}
+
+.home {
+  min-height: min(92vh, 900px);
+  padding-block: 9rem 5.5rem;
+}
+
+.interior {
+  min-height: min(64vh, 620px);
+  padding-block: 9rem 4.5rem;
+}
+
+/* ------------------------------------------------------------- media */
+
+.media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.mediaInner {
+  position: absolute;
+  inset: -12% 0;
+  will-change: transform;
+}
+
+/* Extra bleed so the pointer drift never reaches an edge. */
+.pointerLayer {
+  position: absolute;
+  inset: -20px;
+  transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+
+.mediaInner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Fine film grain stops the large flat gradient from banding. */
+.grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.32;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
+}
+
+/* Gradient keeps text legible over any part of the photograph. */
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      to top,
+      rgba(11, 31, 58, 0.94) 0%,
+      rgba(11, 31, 58, 0.72) 38%,
+      rgba(11, 31, 58, 0.42) 70%,
+      rgba(11, 31, 58, 0.55) 100%
+    ),
+    linear-gradient(to right, rgba(11, 31, 58, 0.7), rgba(11, 31, 58, 0.15));
+}
+
+/* ----------------------------------------------------------- content */
+
+.content {
+  position: relative;
+}
+
+.center {
+  align-items: center;
+  text-align: center;
+}
+
+.center .title,
+.center .lede {
+  margin-inline: auto;
+}
+
+.center .actions {
+  justify-content: center;
+}
+
+.eyebrow {
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 1.5rem;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  color: var(--paper);
+  max-width: 17ch;
+}
+
+.home .title {
+  font-size: var(--step-5);
+  line-height: 1.02;
+}
+
+.interior .title {
+  font-size: var(--step-4);
+}
+
+.lede {
+  margin: 1.9rem 0 0;
+  font-size: var(--step-1);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 50ch;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.6rem;
+}
+
+/* ---------------------------------------------- load-in choreography */
+
+.enter {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: enter 0.95s var(--ease) forwards;
+}
+
+.eyebrow.enter {
+  animation-delay: 0.1s;
+}
+
+.title.enter {
+  animation-delay: 0.22s;
+}
+
+.lede.enter {
+  animation-delay: 0.36s;
+}
+
+.actions.enter {
+  animation-delay: 0.5s;
+}
+
+@keyframes enter {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------- scroll cue */
+
+.scrollCue {
+  position: absolute;
+  left: 50%;
+  bottom: 1.75rem;
+  width: 1px;
+  height: 3.5rem;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.scrollLine {
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  animation: cue 2.4s var(--ease) infinite;
+}
+
+@keyframes cue {
+  0% {
+    transform: translateY(-100%);
+  }
+  60%,
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* ------------------------------------------------------- responsive */
+
+@media (max-width: 860px) {
+  .home {
+    min-height: min(82vh, 680px);
+    padding-block: 7.5rem 4rem;
+  }
+
+  .interior {
+    min-height: min(52vh, 460px);
+    padding-block: 7.5rem 3.5rem;
+  }
+
+  .title {
+    max-width: 20ch;
+  }
+
+  .scrollCue {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .enter {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .scrollLine {
+    animation: none;
+  }
+
+  .pointerLayer {
+    transition: none;
+  }
+}

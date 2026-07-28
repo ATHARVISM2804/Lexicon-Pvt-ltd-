@@ -1,0 +1,49 @@
+.reveal {
+  transition: opacity 0.85s var(--ease), transform 0.85s var(--ease),
+    clip-path 1s var(--ease);
+  will-change: opacity, transform;
+}
+
+.rise {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+.fade {
+  opacity: 0;
+}
+
+.scale {
+  opacity: 0;
+  transform: scale(0.965);
+}
+
+.left {
+  opacity: 0;
+  transform: translateX(-32px);
+}
+
+.right {
+  opacity: 0;
+  transform: translateX(32px);
+}
+
+/* Sweeps the image open rather than fading it in. */
+.wipe {
+  clip-path: inset(0 0 100% 0);
+}
+
+.shown {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 0 0 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+    transition: none;
+  }
+}

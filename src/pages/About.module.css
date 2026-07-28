@@ -1,0 +1,158 @@
+.eyebrow {
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+  margin: 0 0 1.4rem;
+}
+
+.eyebrowGold {
+  composes: eyebrow;
+  color: var(--gold);
+}
+
+/* -------------------------------------------------------- narrative */
+
+.narrative {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 8fr);
+  gap: 1.5rem 4rem;
+}
+
+.lead {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 300;
+  line-height: 1.4;
+  color: var(--navy-900);
+  max-width: 30ch;
+  margin-bottom: 2rem;
+}
+
+.text {
+  color: var(--slate-500);
+  max-width: 62ch;
+  margin-bottom: 1.2rem;
+}
+
+/* ------------------------------------------------------------ motto */
+
+.mottoInner {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: 2rem 5rem;
+}
+
+.mottoTitle {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  font-weight: 300;
+  color: var(--paper);
+}
+
+.mottoText {
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 52ch;
+}
+
+.mottoSplit {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--line-dark);
+}
+
+.mottoSub {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-weight: 400;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+/* ------------------------------------------------------- principles */
+
+.principleGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.factWrap {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.principle {
+  position: relative;
+  border-top: 1px solid var(--line);
+  padding-top: 1.9rem;
+}
+
+.principleMark {
+  position: absolute;
+  top: -4.5px;
+  left: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.principleTitle {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 300;
+  margin-bottom: 0.85rem;
+}
+
+.principleText {
+  color: var(--slate-500);
+  margin: 0;
+  max-width: 46ch;
+}
+
+/* ------------------------------------------------------------ place */
+
+.placeInner {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+.placeFigure {
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.placeFigure > span {
+  height: clamp(17rem, 30vw, 24rem);
+}
+
+.placeTitle {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  font-weight: 300;
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .narrative,
+  .mottoInner,
+  .placeInner,
+  .principleGrid,
+  .mottoSplit {
+    grid-template-columns: 1fr;
+  }
+
+  .mottoSplit {
+    gap: 2rem;
+  }
+
+  .placeFigure > span {
+    height: 15rem;
+  }
+}

@@ -1,0 +1,34 @@
+.split {
+  /* The masks are inline-block, so the space between words has to be
+     restored explicitly. */
+  word-spacing: normal;
+}
+
+.mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.06em;
+}
+
+.mask::after {
+  content: " ";
+  white-space: pre;
+}
+
+.word {
+  display: inline-block;
+  transform: translateY(105%);
+  transition: transform 0.95s var(--ease);
+}
+
+.shown .word {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .word {
+    transform: none;
+    transition: none;
+  }
+}

@@ -1,0 +1,68 @@
+.curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: var(--navy-900);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  pointer-events: none;
+}
+
+.cover {
+  animation: cover 0.42s var(--ease) forwards;
+}
+
+.reveal {
+  animation: reveal 0.55s var(--ease) forwards;
+}
+
+@keyframes cover {
+  from {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+  to {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+}
+
+@keyframes reveal {
+  from {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  to {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+}
+
+.page {
+  min-height: 60vh;
+}
+
+.pageIn {
+  animation: pageIn 0.7s var(--ease) 0.12s both;
+}
+
+@keyframes pageIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .curtain {
+    display: none;
+  }
+
+  .pageIn {
+    animation: none;
+  }
+}

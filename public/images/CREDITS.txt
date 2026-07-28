@@ -1,0 +1,37 @@
+Photography — Unsplash (https://unsplash.com/license)
+Free for commercial use. Attribution appreciated, not required.
+
+Source photo IDs (https://unsplash.com/photos/<id>):
+
+-- Heroes and backgrounds --
+bg-hero.jpg               1480714378408-67cf0d13bc1b
+bg-night.jpg              1444723121867-7a241cacace9
+bg-street.jpg             1519501025264-65ba15a82390
+bg-rotunda.jpg            1439337153520-7082a56a81f4
+portfolio-hero.jpg        1486406146926-c627a92ad1ab
+hero-towers.jpg           1449157291145-7efd050a4d0e
+
+-- Sectors --
+financial.jpg             1554469384-e58fac16e23a
+real-estate.jpg           1568605114967-8130f3a36994
+real-estate-interior.jpg  1600607687939-ce8a6c25118c
+automotive.jpg            1553440569-bcc63803a83d
+automotive-detail.jpg     1494976388531-d1058494cdd8
+
+-- Gallery and supporting --
+house-modern.jpg          1600585154340-be6161a56a0c
+hotel.jpg                 1517840901100-8179e982acb7
+supercar.jpg              1542362567-b07e54358753
+stair-interior.jpg        1502005229762-cf1b2da7c5d6
+interior-lounge.jpg       1524758631624-e2822e304c36
+texture-facade.jpg        1497604401993-f2e922e5cb0a
+
+-- Firm and media --
+media.jpg                 1478720568477-152d9b164e26
+office.jpg                1497215728101-856f4ea42174
+boardroom.jpg             1431540015161-0bf868a2d407
+workspace.jpg             1497366811353-6870744d04b2
+chicago.jpg               1494522855154-9297ac14b55f
+
+See CONTENT-CHECKLIST.md — several of these must be replaced with the
+firm's own properties, vehicles, and premises before launch.

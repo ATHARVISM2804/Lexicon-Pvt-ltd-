@@ -1,0 +1,137 @@
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: clamp(2.5rem, 5vw, 6rem);
+  align-items: start;
+}
+
+.card {
+  border-top: 1px solid var(--line);
+  padding-top: 1.4rem;
+  margin-bottom: 2.25rem;
+}
+
+.cardTitle {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+  margin: 0 0 0.9rem;
+}
+
+.address {
+  font-style: normal;
+  line-height: 1.85;
+  margin: 0;
+}
+
+.cardText {
+  margin: 0;
+  color: var(--slate-500);
+  line-height: 1.8;
+}
+
+.cardText a {
+  color: var(--navy-900);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 1px;
+  transition: color 0.22s var(--ease);
+}
+
+.cardText a:hover {
+  color: var(--gold-ink);
+}
+
+.officeFigure {
+  overflow: hidden;
+  border-radius: var(--radius);
+  margin-top: 2.5rem;
+}
+
+.officeFigure > span {
+  height: 15rem;
+}
+
+.officeFigure img {
+  transition: transform 0.9s var(--ease), opacity 0.9s var(--ease);
+}
+
+.officeFigure:hover img {
+  transform: scale(1.04);
+}
+
+/* ------------------------------------------------------------- form */
+
+.fieldRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.form {
+  background: var(--canvas);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(1.75rem, 4vw, 3rem);
+}
+
+.field {
+  margin-bottom: 1.6rem;
+}
+
+.field label {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate-600);
+  margin-bottom: 0.6rem;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--navy-900);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.8rem 0.95rem;
+  transition: border-color 0.22s var(--ease);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--navy-700);
+}
+
+.note {
+  margin: 1.25rem 0 0;
+  font-size: 0.88rem;
+  color: var(--slate-500);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .fieldRow {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}

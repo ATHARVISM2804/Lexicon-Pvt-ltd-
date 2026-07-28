@@ -1,0 +1,33 @@
+/* Deliberately light: it sits between a navy band and the navy footer on
+   several pages, and keeps those two from merging into one dark mass. */
+.cta {
+  background: var(--canvas);
+  border-top: 1px solid var(--line);
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: clamp(1.75rem, 4vw, 4.5rem);
+  align-items: center;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  font-weight: 300;
+  max-width: 15ch;
+}
+
+.text {
+  color: var(--slate-500);
+  margin-bottom: 1.75rem;
+  max-width: 44ch;
+}
+
+@media (max-width: 860px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+}

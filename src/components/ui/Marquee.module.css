@@ -1,0 +1,65 @@
+.marquee {
+  overflow: hidden;
+  background: var(--navy-900);
+  color: var(--paper);
+  padding-block: 1.15rem;
+  border-block: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: slide 38s linear infinite;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: 3.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0 1.625rem;
+}
+
+.list li {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee:hover .track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+
+  .marquee {
+    overflow-x: auto;
+  }
+}

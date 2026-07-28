@@ -1,0 +1,240 @@
+.eyebrow {
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+  margin: 0 0 1.4rem;
+}
+
+.eyebrowGold {
+  composes: eyebrow;
+  color: var(--gold);
+}
+
+/* The italic conjunction in the hero headline. */
+.amp {
+  font-style: italic;
+  color: var(--gold);
+}
+
+/* ------------------------------------------------------- introduction */
+
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 8fr);
+  gap: 1.5rem 4rem;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.introLead {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 300;
+  line-height: 1.4;
+  max-width: 32ch;
+  margin-bottom: 1.75rem;
+}
+
+.introText {
+  color: var(--slate-500);
+  max-width: 62ch;
+  margin: 0;
+}
+
+.factWrap {
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+/* ---------------------------------------------------- sector cards */
+
+.sectorGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 2.5vw, 2.25rem);
+}
+
+.sectorCard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--paper);
+  transition: border-color 0.3s var(--ease), transform 0.35s var(--ease),
+    box-shadow 0.35s var(--ease);
+}
+
+.sectorCard:hover {
+  border-color: transparent;
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px -22px rgba(11, 31, 58, 0.45);
+}
+
+.sectorImage {
+  overflow: hidden;
+}
+
+.sectorImage > span {
+  height: 14rem;
+}
+
+.sectorImage img {
+  transition: transform 0.9s var(--ease), opacity 0.9s var(--ease);
+}
+
+.sectorCard:hover .sectorImage img {
+  transform: scale(1.06);
+}
+
+.sectorBody {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+.sectorLabel {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+  margin: 0 0 0.9rem;
+}
+
+.sectorTitle {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 300;
+  margin-bottom: 0.9rem;
+}
+
+.sectorText {
+  color: var(--slate-500);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.sectorLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--navy-900);
+}
+
+.sectorLink svg {
+  transition: transform 0.3s var(--ease);
+}
+
+.sectorCard:hover .sectorLink svg {
+  transform: translateX(5px);
+}
+
+/* -------------------------------------------------- differentiators */
+
+.diffGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.75rem, 3vw, 2.75rem);
+}
+
+.diffImage {
+  overflow: hidden;
+  border-radius: var(--radius);
+  margin-bottom: 1.6rem;
+}
+
+.diffImage > span {
+  height: 13rem;
+}
+
+.diffImage img {
+  transition: transform 0.9s var(--ease), opacity 0.9s var(--ease);
+}
+
+.diff:hover .diffImage img {
+  transform: scale(1.05);
+}
+
+.diffTitle {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 300;
+  margin-bottom: 0.85rem;
+}
+
+.diffText {
+  color: var(--slate-500);
+  font-size: 0.97rem;
+  margin: 0;
+  max-width: 40ch;
+}
+
+/* ----------------------------------------------------- media strip */
+
+.mediaBand {
+  background: var(--navy-900);
+  color: var(--paper);
+}
+
+.mediaInner {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.mediaFigure {
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.mediaFigure > span {
+  height: clamp(18rem, 32vw, 26rem);
+}
+
+.mediaTitle {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  font-weight: 300;
+  max-width: 14ch;
+  margin-bottom: 1.5rem;
+}
+
+.mediaText {
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 46ch;
+  margin-bottom: 1.1rem;
+}
+
+.mediaText:last-of-type {
+  margin-bottom: 2rem;
+}
+
+/* ------------------------------------------------------ responsive */
+
+@media (max-width: 960px) {
+  .sectorGrid,
+  .diffGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sectorImage > span,
+  .diffImage > span {
+    height: 15rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .intro,
+  .mediaInner {
+    grid-template-columns: 1fr;
+  }
+}
