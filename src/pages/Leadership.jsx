@@ -77,6 +77,28 @@ export default function Leadership() {
                   <h3 className={styles.name}>{person.name}</h3>
                   <p className={styles.role}>{person.role}</p>
                   <p className={styles.remit}>{person.remit}</p>
+                  {person.phone ? (
+                    <a
+                      className={styles.phone}
+                      href={`tel:${person.phone.replace(/[^\d+]/g, "")}`}
+                    >
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M5.2 2.5 6.6 5 5.4 6.6a8 8 0 0 0 4 4L11 9.4l2.5 1.4v2.4a1 1 0 0 1-1.1 1A11.5 11.5 0 0 1 2.2 3.6a1 1 0 0 1 1-1.1h2Z"
+                          stroke="currentColor"
+                          strokeWidth="1.3"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                      {person.phone}
+                    </a>
+                  ) : null}
                 </div>
               </Reveal>
             ))}

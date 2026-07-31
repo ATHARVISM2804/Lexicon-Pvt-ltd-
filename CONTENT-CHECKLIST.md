@@ -7,7 +7,8 @@ with the client before the site goes live.
 
 | Item | Where | Why |
 |---|---|---|
-| Leadership portraits | `src/data/leadership.js` → `portrait` | Jon Stewart and Allie Stewart are named on the page, but shown as monogram tiles. Add real photographs to `public/images/`, uncomment the `portrait` line on each entry, then run `scripts/gen-placeholders.sh`. **Never substitute stock portraits for real people.** |
+| Allie Stewart portrait | `src/data/leadership.js` → `portrait` | Jon Stewart's photograph is in place. Allie Stewart still shows an "AS" monogram tile. Supply a photo, crop it to **3:4 head-and-shoulders** (Jon's is 440×600), save to `public/images/team-allie-stewart.jpg`, uncomment the `portrait` line, then run `scripts/gen-placeholders.sh`. **Never substitute a stock portrait for a real person.** |
+| Confirm the published cell number | `src/data/leadership.js` → `phone` | `+1 847-456-0555` is now live on the public leadership page as Jon Stewart's direct line, and is click-to-call on mobile. Confirm he is happy for a personal cell to be publicly indexed — it will be scraped. Move it to the Contact page as a firm number, or remove the `phone` field, if not. |
 | Leadership bios | `src/data/leadership.js` → `remit` | The descriptions of what each person is responsible for were written from the firm's positioning, not supplied by them. Both should confirm their own wording. |
 | Contact email | `src/data/site.js` → `contact.email` | Currently `inquiries@lexiconone.com`, which is a guess. The form will not reach anyone until this is real. |
 | Real estate photography | `real-estate.jpg`, `real-estate-interior.jpg`, `house-modern.jpg`, `hotel.jpg`, `interior-lounge.jpg`, `stair-interior.jpg` | Stock properties. Showing buildings the firm does not own is misleading on an asset management site — this matters most in the portfolio gallery, where images read as owned assets. |

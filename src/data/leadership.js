@@ -9,7 +9,8 @@ export const leadership = [
     name: "Jon Stewart",
     role: "President",
     initials: "JS",
-    // portrait: "/images/team-jon-stewart.jpg",
+    portrait: "/images/team-jon-stewart.jpg",
+    phone: "+1 847-456-0555",
     remit:
       "Leads Lexicon One across its financial holdings, real estate, and automotive assets, and sets the standard every acquisition is measured against. Final responsibility for how the firm commits capital and how long it stays committed.",
   },
