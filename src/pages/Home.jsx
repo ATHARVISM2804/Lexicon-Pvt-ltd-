@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { company } from "../data/site.js";
 import { sectors, approach } from "../data/sectors.js";
 import { marqueeItems, facts, differentiators } from "../data/content.js";
+import { leadership } from "../data/leadership.js";
 import Button from "../components/ui/Button.jsx";
 import Reveal from "../components/ui/Reveal.jsx";
 import Figure from "../components/ui/Figure.jsx";
@@ -14,6 +15,8 @@ import ProcessTrack from "../components/sections/ProcessTrack.jsx";
 import CtaSection from "../components/sections/CtaSection.jsx";
 import usePageMeta from "../hooks/usePageMeta.js";
 import styles from "./Home.module.css";
+
+const founder = leadership.find((p) => p.id === "jon-stewart");
 
 export default function Home() {
   usePageMeta("Lexicon One Enterprises — Asset Management", company.summary);
@@ -69,6 +72,21 @@ export default function Home() {
           <div className={styles.factWrap}>
             <FactStrip items={facts} />
           </div>
+        </div>
+      </section>
+
+      {/* Founder */}
+      <section className="section">
+        <div className={`container ${styles.founder}`}>
+          <Reveal className={styles.founderFigure} variant="wipe">
+            <Figure src={founder.portrait} alt={`${founder.name}, ${founder.role} of Lexicon One Enterprises`} />
+          </Reveal>
+          <Reveal className={styles.founderBody} variant="right" delay={100}>
+            <p className={styles.eyebrow}>{founder.role}</p>
+            <h2 className={styles.founderName}>Mr. {founder.name}</h2>
+            <p className={styles.founderText}>{founder.remit}</p>
+            <Button to="/leadership">Meet the leadership</Button>
+          </Reveal>
         </div>
       </section>
 

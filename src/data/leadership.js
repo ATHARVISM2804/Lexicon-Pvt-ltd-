@@ -7,7 +7,7 @@ export const leadership = [
   {
     id: "jon-stewart",
     name: "Jon Stewart",
-    role: "President",
+    role: "Founder and President",
     initials: "JS",
     portrait: "/images/team-jon-stewart.jpg",
     phone: "+1 847-456-0555",

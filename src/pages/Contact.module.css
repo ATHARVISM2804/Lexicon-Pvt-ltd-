@@ -135,3 +135,10 @@
     gap: 0;
   }
 }
+
+@media (max-width: 860px) {
+  .cardText a {
+    display: inline-block;
+    padding: 0.5rem 0;
+  }
+}

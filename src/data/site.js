@@ -11,8 +11,8 @@ export const contact = {
   city: "Deerfield",
   state: "Illinois",
   zip: "60015",
-  phoneDisplay: "+1 847-374-1074",
-  phoneHref: "+18473741074",
+  phoneDisplay: "+1 847-456-0555",
+  phoneHref: "+18474560555",
   // Placeholder — replace with the firm's real inbox before launch.
   email: "inquiries@lexiconone.com",
 };

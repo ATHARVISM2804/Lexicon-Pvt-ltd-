@@ -28,6 +28,13 @@
   transform: translateX(32px);
 }
 
+@media (max-width: 860px) {
+  .left,
+  .right {
+    transform: translateY(26px);
+  }
+}
+
 /* Sweeps the image open rather than fading it in. */
 .wipe {
   clip-path: inset(0 0 100% 0);

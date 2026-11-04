@@ -46,6 +46,44 @@
   margin-top: clamp(2rem, 4vw, 3rem);
 }
 
+/* --------------------------------------------------------- founder */
+
+.founder {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.founderFigure {
+  overflow: hidden;
+  border-radius: var(--radius);
+  max-width: 24rem;
+}
+
+/* The portrait is 440×600; keep its ratio so nothing is cropped. */
+.founderFigure > span {
+  height: auto;
+  aspect-ratio: 11 / 15;
+}
+
+.founderFigure img {
+  object-position: center top;
+}
+
+.founderName {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+
+.founderText {
+  color: var(--slate-500);
+  max-width: 52ch;
+  margin-bottom: 2rem;
+}
+
 /* ---------------------------------------------------- sector cards */
 
 .sectorGrid {
@@ -234,7 +272,8 @@
 
 @media (max-width: 860px) {
   .intro,
-  .mediaInner {
+  .mediaInner,
+  .founder {
     grid-template-columns: 1fr;
   }
 }

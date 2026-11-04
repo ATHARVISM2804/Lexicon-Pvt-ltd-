@@ -6,7 +6,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 3fr) minmax(0, 3fr);
+  grid-template-columns: minmax(0, 5fr) minmax(0, 3fr) minmax(0, 3fr) auto;
   gap: 3rem;
   padding-bottom: clamp(2.5rem, 5vw, 4rem);
 }
@@ -56,6 +56,12 @@
   line-height: 1.9;
 }
 
+.seal {
+  width: 9rem;
+  height: 9rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
 .legal {
   display: flex;
   flex-wrap: wrap;
@@ -77,5 +83,20 @@
   .grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+  }
+
+  .list li {
+    margin-bottom: 0;
+  }
+
+  .list a,
+  .address a {
+    display: inline-block;
+    padding: 0.55rem 0;
+  }
+
+  .seal {
+    width: 8rem;
+    height: 8rem;
   }
 }

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { company, contact, nav } from "../../data/site.js";
 import Logo from "./Logo.jsx";
+import Seal from "./Seal.jsx";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
@@ -36,6 +37,8 @@ export default function Footer() {
               <a href={`tel:${contact.phoneHref}`}>{contact.phoneDisplay}</a>
             </address>
           </div>
+
+          <Seal className={styles.seal} />
         </div>
 
         <div className={styles.legal}>
