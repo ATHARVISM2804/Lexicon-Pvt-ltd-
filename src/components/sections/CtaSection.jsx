@@ -3,9 +3,9 @@ import Reveal from "../ui/Reveal.jsx";
 import styles from "./CtaSection.module.css";
 
 export default function CtaSection({
-  title = "Start a conversation with the firm.",
-  text = "Questions about the portfolio, the media studio, or a potential partnership are all welcome.",
-  label = "Contact Lexicon One",
+  title = "Private inquiries.",
+  text = "Whether you have a question, an opportunity, or a partnership in mind, we would be glad to hear from you. Every inquiry is treated in confidence.",
+  label = "Begin a conversation",
   to = "/contact",
 }) {
   return (

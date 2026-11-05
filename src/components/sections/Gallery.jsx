@@ -2,14 +2,14 @@ import Reveal from "../ui/Reveal.jsx";
 import Figure from "../ui/Figure.jsx";
 import styles from "./Gallery.module.css";
 
-/* Mosaic of portfolio imagery. The first tile spans two columns so the
-   grid reads as a composition rather than a row of thumbnails. */
+/* Mosaic of portfolio imagery. The first and last tiles span two columns,
+   so six images close every row on both the 3- and 2-column grids. */
 export default function Gallery({ items }) {
   return (
     <div className={styles.grid}>
       {items.map((item, i) => (
         <Reveal
-          className={`${styles.tile} ${i === 0 ? styles.wide : ""}`}
+          className={`${styles.tile} ${i === 0 || i === items.length - 1 ? styles.wide : ""}`}
           variant="wipe"
           delay={i * 80}
           key={item.src}

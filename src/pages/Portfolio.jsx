@@ -1,8 +1,11 @@
+import { useEffect, useRef } from "react";
 import { sectors } from "../data/sectors.js";
+import { gsap, prefersReducedMotion } from "../lib/motion.js";
 import { criteria, galleryItems } from "../data/content.js";
 import Hero from "../components/sections/Hero.jsx";
 import SectionHeading from "../components/ui/SectionHeading.jsx";
 import Reveal from "../components/ui/Reveal.jsx";
+import Icon from "../components/ui/Icon.jsx";
 import SectorFeature from "../components/sections/SectorFeature.jsx";
 import Gallery from "../components/sections/Gallery.jsx";
 import CtaSection from "../components/sections/CtaSection.jsx";
@@ -15,23 +18,52 @@ export default function Portfolio() {
     "Financial holdings, real estate, and automotive assets — the mandate, approach, and horizon for each sector Lexicon One manages."
   );
 
+  const stackRef = useRef(null);
+
+  /* As each card arrives, the one beneath it eases back and dims. */
+  useEffect(() => {
+    if (prefersReducedMotion()) return undefined;
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 961px)", () => {
+      const cards = gsap.utils.toArray("article", stackRef.current);
+      cards.slice(0, -1).forEach((card, i) => {
+        const scrollTrigger = {
+          trigger: cards[i + 1],
+          start: "top bottom",
+          end: "top 6.5rem",
+          scrub: true,
+        };
+        // Scale the card and raise a paper veil over it (see --dim in
+        // SectorFeature.module.css); the card itself stays opaque.
+        gsap.fromTo(
+          card,
+          { scale: 1, "--dim": 0 },
+          { scale: 0.94, "--dim": 0.65, ease: "none", scrollTrigger }
+        );
+      });
+    });
+    return () => mm.revert();
+  }, []);
+
   return (
     <>
       <Hero
         eyebrow="The portfolio"
-        title="A portfolio assembled with intent"
-        lede="Three sectors, each managed on its own fundamentals and held to the same standard of performance and long-term value."
+        title="What we own and manage"
+        lede="Financial holdings, real estate, and automotive assets: three sectors, each managed on its own terms for long-term value."
         image="/images/portfolio-hero.jpg"
       />
 
       <section className={`section ${styles.features}`}>
-        <div className="container">
+        <div className="container" ref={stackRef}>
           {sectors.map((sector, i) => (
             <SectorFeature
               key={sector.id}
               sector={sector}
               index={i + 1}
               flip={i % 2 === 1}
+              href={`/portfolio/${sector.id}`}
+              stack
             />
           ))}
         </div>
@@ -42,8 +74,8 @@ export default function Portfolio() {
         <div className="container">
           <SectionHeading
             eyebrow="Investment criteria"
-            title="What an asset has to clear"
-            intro="Four tests applied to every acquisition, regardless of which sector it belongs to."
+            title="What every purchase must pass"
+            intro="Four tests every asset has to meet before we buy it, in any sector."
           />
           <dl className={styles.criteria}>
             {criteria.map((item, i) => (
@@ -53,7 +85,12 @@ export default function Portfolio() {
                 key={item.term}
                 delay={i * 80}
               >
-                <dt>{item.term}</dt>
+                <dt>
+                  <span className={styles.criterionIcon}>
+                    <Icon name={item.icon} size={26} />
+                  </span>
+                  {item.term}
+                </dt>
                 <dd>{item.desc}</dd>
               </Reveal>
             ))}
@@ -67,7 +104,7 @@ export default function Portfolio() {
           <SectionHeading
             eyebrow="Across the book"
             title="The range of the portfolio"
-            intro="Residential and commercial property, automotive holdings, and the financial positions that anchor them."
+            intro="Residential and commercial property, vehicles, and the financial holdings behind them."
           />
           <Gallery items={galleryItems} />
         </div>
@@ -75,7 +112,7 @@ export default function Portfolio() {
 
       <CtaSection
         title="Discuss the portfolio."
-        text="Inquiries about the firm's sectors, its approach, or a specific opportunity begin with a conversation."
+        text="Questions about a sector, our approach, or a specific opportunity? Get in touch."
       />
     </>
   );

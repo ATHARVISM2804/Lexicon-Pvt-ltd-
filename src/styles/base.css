@@ -21,6 +21,9 @@ body {
   font-size: var(--step-0);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  /* Cormorant defaults to old-style figures; numbers here should sit on
+     the line. */
+  font-variant-numeric: lining-nums;
 }
 
 img {
@@ -114,4 +117,29 @@ button {
     animation-duration: 0.001ms !important;
     transition-duration: 0.001ms !important;
   }
+}
+
+/* Keyboard focus: a gold ring on every interactive element. */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* Tabular, lining figures wherever numbers are set. */
+.figures {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* Lenis smooth scroll: let it own the easing instead of the browser. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
 }

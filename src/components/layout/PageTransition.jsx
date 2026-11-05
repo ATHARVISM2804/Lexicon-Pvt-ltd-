@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { ScrollTrigger, scrollToTop } from "../../lib/motion.js";
 import styles from "./PageTransition.module.css";
 
 /* Sweeps a navy curtain up over the old page, swaps behind it, then draws
@@ -28,7 +29,7 @@ export default function PageTransition({ children }) {
 
     if (reduced) {
       setDisplayLocation(location);
-      if (!location.hash) window.scrollTo(0, 0);
+      if (!location.hash) scrollToTop();
       return undefined;
     }
 
@@ -36,8 +37,10 @@ export default function PageTransition({ children }) {
 
     const swap = window.setTimeout(() => {
       setDisplayLocation(location);
-      if (!location.hash) window.scrollTo(0, 0);
+      if (!location.hash) scrollToTop();
       setPhase("revealing");
+      // The new page has different heights; re-measure scroll animations.
+      window.requestAnimationFrame(() => ScrollTrigger.refresh());
     }, 420);
 
     const settle = window.setTimeout(() => setPhase("idle"), 1000);

@@ -82,6 +82,36 @@
 
 /* ---------------------------------------------------------- toggle */
 
+/* Phone number set apart from the page links by a gold hairline. */
+.call {
+  padding: 0.55rem 0 0.55rem clamp(1.25rem, 2.5vw, 2.25rem);
+  border-left: 1px solid rgba(200, 161, 90, 0.55);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.solid .call {
+  color: var(--gold-ink);
+}
+
+.call:hover {
+  color: var(--gold-bright);
+}
+
+.solid .call:hover {
+  color: var(--navy-900);
+}
+
+@media (max-width: 1020px) {
+  .call {
+    display: none;
+  }
+}
+
 .toggle {
   display: none;
   flex-direction: column;

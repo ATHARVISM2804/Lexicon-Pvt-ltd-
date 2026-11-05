@@ -1,12 +1,10 @@
-import { company } from "../data/site.js";
 import { principles } from "../data/sectors.js";
-import { facts } from "../data/content.js";
+import { leadership } from "../data/leadership.js";
 import Hero from "../components/sections/Hero.jsx";
 import SectionHeading from "../components/ui/SectionHeading.jsx";
 import Reveal from "../components/ui/Reveal.jsx";
 import Figure from "../components/ui/Figure.jsx";
-import FactStrip from "../components/sections/FactStrip.jsx";
-import ParallaxBand from "../components/sections/ParallaxBand.jsx";
+import Icon from "../components/ui/Icon.jsx";
 import CtaSection from "../components/sections/CtaSection.jsx";
 import usePageMeta from "../hooks/usePageMeta.js";
 import styles from "./About.module.css";
@@ -22,7 +20,7 @@ export default function About() {
       <Hero
         eyebrow="About the firm"
         title="Built for the long term"
-        lede="Lexicon One Enterprises manages a diverse portfolio from Deerfield, Illinois — applying a single standard of discipline across every sector it holds."
+        lede="Lexicon One Enterprises is a private asset management firm based in Deerfield, Illinois, led by its founder and president, Jon Stewart."
         image="/images/bg-rotunda.jpg"
       />
 
@@ -35,27 +33,81 @@ export default function About() {
             </Reveal>
             <Reveal delay={100}>
               <p className={styles.lead}>
-                An asset manager's real inventory is not capital. It is
-                judgment, built across sectors and cycles.
+                We buy good assets, look after them closely, and hold them for
+                the long term.
               </p>
               <p className={styles.text}>
-                {company.summary} Each holding is managed on its own
-                fundamentals — a property is not read like a portfolio position,
-                and neither is read like a vehicle — while all of them answer to
-                the same standard of performance and durability.
+                Lexicon One manages a portfolio across three sectors: financial
+                holdings, real estate, and automotive assets. Each sector is
+                managed on its own terms, and every asset is held to the same
+                standard: it has to perform today and grow in value over time.
               </p>
               <p className={styles.text}>
-                Alongside its core operations, the firm develops and scales
-                media projects across platforms, combining strategic investment
-                with creative execution at the intersection of finance and
-                content.
+                Alongside this, our media studio invests in and produces
+                projects across video, social, and audio platforms.
               </p>
             </Reveal>
           </div>
+        </div>
+      </section>
 
-          <div className={styles.factWrap}>
-            <FactStrip items={facts} />
-          </div>
+      {/* The team */}
+      <section className="section sectionTint" id="team">
+        <div className="container">
+          <SectionHeading
+            eyebrow="The team"
+            title="Who leads Lexicon One"
+            intro="A senior team covering the firm's capital decisions and how its work reaches the world."
+          />
+
+          <ul className={styles.teamGrid}>
+            {leadership.map((person, i) => (
+              <Reveal
+                as="li"
+                className={styles.card}
+                key={person.id}
+                delay={i * 90}
+              >
+                <div className={styles.portrait}>
+                  {person.portrait ? (
+                    <Figure src={person.portrait} alt={person.name} />
+                  ) : (
+                    <span className={styles.monogram} aria-hidden="true">
+                      {person.initials}
+                    </span>
+                  )}
+                </div>
+
+                <div className={styles.body}>
+                  <h3 className={styles.name}>{person.name}</h3>
+                  <p className={styles.role}>{person.role}</p>
+                  <p className={styles.remit}>{person.remit}</p>
+                  {person.phone ? (
+                    <a
+                      className={styles.phone}
+                      href={`tel:${person.phone.replace(/[^\d+]/g, "")}`}
+                    >
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M5.2 2.5 6.6 5 5.4 6.6a8 8 0 0 0 4 4L11 9.4l2.5 1.4v2.4a1 1 0 0 1-1.1 1A11.5 11.5 0 0 1 2.2 3.6a1 1 0 0 1 1-1.1h2Z"
+                          stroke="currentColor"
+                          strokeWidth="1.3"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                      {person.phone}
+                    </a>
+                  ) : null}
+                </div>
+              </Reveal>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -68,23 +120,22 @@ export default function About() {
           </Reveal>
           <Reveal delay={100} variant="right" className={styles.mottoBody}>
             <p className={styles.mottoText}>
-              Two verbs in a deliberate order. Innovation finds the structures
-              others have not tried; leadership commits to them before the
-              consensus arrives.
+              Two words that describe how we work: find opportunities others
+              have missed, then act on them with confidence.
             </p>
             <div className={styles.mottoSplit}>
               <div>
                 <h3 className={styles.mottoSub}>Innovate</h3>
                 <p className={styles.mottoText}>
-                  Look for value where the map is still blank — overlooked
-                  sectors and unconventional pairings of capital and craft.
+                  Look for value in places others overlook, and try new ways of
+                  putting capital to work.
                 </p>
               </div>
               <div>
                 <h3 className={styles.mottoSub}>Lead</h3>
                 <p className={styles.mottoText}>
-                  Act first and stand behind it. Conviction, sized responsibly
-                  and reported candidly, is the firm's edge.
+                  Move first and stand behind our decisions, while keeping risk
+                  sensible and reporting honestly.
                 </p>
               </div>
             </div>
@@ -97,8 +148,8 @@ export default function About() {
         <div className="container">
           <SectionHeading
             eyebrow="Principles"
-            title="What every decision is checked against"
-            intro="Four commitments that govern how the firm underwrites, operates, and reports."
+            title="What guides every decision"
+            intro="Four principles behind how we invest, manage, and report."
           />
           <div className={styles.principleGrid}>
             {principles.map((item, i) => (
@@ -108,6 +159,9 @@ export default function About() {
                 delay={i * 80}
               >
                 <span className={styles.principleMark} aria-hidden="true" />
+                <span className={styles.principleIcon}>
+                  <Icon name={item.icon} size={26} />
+                </span>
                 <h3 className={styles.principleTitle}>{item.title}</h3>
                 <p className={styles.principleText}>{item.desc}</p>
               </Reveal>
@@ -115,12 +169,6 @@ export default function About() {
           </div>
         </div>
       </section>
-
-      <ParallaxBand
-        image="/images/bg-street.jpg"
-        eyebrow="The standard"
-        quote="Manage each asset on its own terms. Hold all of them to one."
-      />
 
       {/* Location */}
       <section className="section sectionTint">
@@ -132,17 +180,17 @@ export default function About() {
             <p className={styles.eyebrow}>Where we work</p>
             <h2 className={styles.placeTitle}>Deerfield, Illinois</h2>
             <p className={styles.text}>
-              The firm operates from Deerfield, north of Chicago — close enough
-              to the city's financial and property markets to move quickly, far
-              enough to keep a long view.
+              Our office is in Deerfield, just north of Chicago: close to the
+              city's financial and property markets, with room to think long
+              term.
             </p>
           </Reveal>
         </div>
       </section>
 
       <CtaSection
-        title="See how the discipline is applied."
-        text="The portfolio page sets out the mandate, approach, and horizon for each sector the firm manages."
+        title="What we own, and how we hold it."
+        text="See each area of ownership: what we buy, how we manage it, and how long we keep it."
         label="View the portfolio"
         to="/portfolio"
       />

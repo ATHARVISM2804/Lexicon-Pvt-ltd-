@@ -20,7 +20,6 @@ export const contact = {
 export const nav = [
   { to: "/", label: "Home", end: true },
   { to: "/about", label: "About" },
-  { to: "/leadership", label: "Leadership" },
   { to: "/portfolio", label: "Portfolio" },
   { to: "/media", label: "Media" },
   { to: "/contact", label: "Contact" },

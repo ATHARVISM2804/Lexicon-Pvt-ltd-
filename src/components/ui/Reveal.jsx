@@ -66,6 +66,7 @@ export default function Reveal({
         shown ? styles.shown : ""
       } ${className}`}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
+      data-shown={shown ? "" : undefined}
       {...rest}
     >
       {children}

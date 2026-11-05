@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 import { company } from "../data/site.js";
 import { sectors, approach } from "../data/sectors.js";
-import { marqueeItems, facts, differentiators } from "../data/content.js";
+import { facts } from "../data/content.js";
 import { leadership } from "../data/leadership.js";
 import Button from "../components/ui/Button.jsx";
 import Reveal from "../components/ui/Reveal.jsx";
 import Figure from "../components/ui/Figure.jsx";
-import Marquee from "../components/ui/Marquee.jsx";
 import SectionHeading from "../components/ui/SectionHeading.jsx";
 import Hero from "../components/sections/Hero.jsx";
 import FactStrip from "../components/sections/FactStrip.jsx";
@@ -18,6 +17,25 @@ import styles from "./Home.module.css";
 
 const founder = leadership.find((p) => p.id === "jon-stewart");
 
+/* The four areas of ownership as an index: the three sectors plus the
+   studio, each opening its own page. */
+const areas = [
+  ...sectors.map((s) => ({
+    to: `/portfolio/${s.id}`,
+    label: s.label,
+    line: s.summary,
+    image: s.image,
+    alt: s.alt,
+  })),
+  {
+    to: "/media",
+    label: "Media studio",
+    line: "We invest in and produce media projects across video, social, and audio.",
+    image: "/images/media.jpg",
+    alt: "Projector casting a beam of light in a darkened room",
+  },
+];
+
 export default function Home() {
   usePageMeta("Lexicon One Enterprises — Asset Management", company.summary);
 
@@ -25,161 +43,127 @@ export default function Home() {
     <>
       <Hero
         size="home"
-        eyebrow="Asset Management · Deerfield, Illinois"
+        eyebrow="Private asset management · Deerfield, Illinois"
         title={
           <>
             Innovate <em className={styles.amp}>and</em> Lead.
           </>
         }
-        lede="An asset management firm overseeing a diverse portfolio across financial holdings, real estate, and automotive assets — focused on performance and long-term value in every sector."
-        image="/images/bg-hero.jpg"
+        lede="Lexicon One Enterprises acquires, manages, and grows financial holdings, real estate, and automotive assets for the long term."
+        image="/images/hero-tower-poster.jpg"
+        video="/video/hero-tower.mp4"
+        videoSmall="/video/hero-tower-mobile.mp4"
         actions={
           <>
             <Button to="/portfolio" variant="light">
               View the portfolio
             </Button>
-            <Button to="/about" variant="ghost">
-              About the firm
+            <Button to="/contact" variant="ghost">
+              Private inquiries
             </Button>
           </>
         }
       />
 
-      <Marquee items={marqueeItems} />
-
-      {/* Introduction + facts */}
-      <section className="section">
+      {/* At a glance */}
+      <section className={styles.glance} aria-label="At a glance">
         <div className="container">
-          <div className={styles.intro}>
-            <Reveal>
-              <p className={styles.eyebrow}>The firm</p>
-            </Reveal>
-            <Reveal delay={90}>
-              <p className={styles.introLead}>
-                Three sectors, one standard. Lexicon One manages each asset
-                class on its own fundamentals and holds all of them to the same
-                measure of durability.
-              </p>
-              <p className={styles.introText}>
-                A property is not read like a portfolio position, and neither is
-                read like a vehicle. What they share is the discipline applied
-                to them: a complete underwrite before entry, active oversight
-                while held, and patience with the timing of every exit.
-              </p>
-            </Reveal>
-          </div>
-
-          <div className={styles.factWrap}>
-            <FactStrip items={facts} />
-          </div>
+          <FactStrip items={facts} />
         </div>
       </section>
 
-      {/* Founder */}
+      {/* Letter from the founder.
+          DRAFT copy written for Jon Stewart's approval; replace with his own
+          words once he has reviewed it. */}
       <section className="section">
-        <div className={`container ${styles.founder}`}>
-          <Reveal className={styles.founderFigure} variant="wipe">
-            <Figure src={founder.portrait} alt={`${founder.name}, ${founder.role} of Lexicon One Enterprises`} />
+        <div className={`container ${styles.letter}`}>
+          <Reveal className={styles.letterFigure} variant="wipe">
+            <Figure
+              src={founder.portrait}
+              alt={`${founder.name}, ${founder.role} of Lexicon One Enterprises`}
+            />
           </Reveal>
-          <Reveal className={styles.founderBody} variant="right" delay={100}>
-            <p className={styles.eyebrow}>{founder.role}</p>
-            <h2 className={styles.founderName}>Mr. {founder.name}</h2>
-            <p className={styles.founderText}>{founder.remit}</p>
-            <Button to="/leadership">Meet the leadership</Button>
+          <Reveal className={styles.letterBody} delay={120}>
+            <p className={styles.eyebrow}>A letter from the founder</p>
+            <p className={styles.letterLead}>
+              Lexicon One was built on a simple idea: own good assets, look
+              after them properly, and give them the time they need.
+            </p>
+            <p className={styles.letterText}>
+              We invest across financial holdings, real estate, and automotive
+              assets. We study every opportunity before we commit, we stay
+              closely involved while we own it, and we are patient about when to
+              sell. That discipline is the same whether we are holding a
+              building, an investment, or a car.
+            </p>
+            <p className={styles.letterText}>
+              If you would like to talk about working with us, I would be glad
+              to hear from you.
+            </p>
+            <p className={styles.signature}>
+              <span className={styles.signName}>{founder.name}</span>
+              <span className={styles.signRole}>{founder.role}</span>
+            </p>
+            <Button to="/about#team">Meet the team</Button>
           </Reveal>
         </div>
       </section>
 
-      {/* Sectors */}
+      {/* What we manage: numbered index */}
       <section className="section sectionTint">
         <div className="container">
           <SectionHeading
-            eyebrow="The portfolio"
-            title="Three sectors, one discipline"
-            intro="Each asset class is managed on its own fundamentals and held to a single standard: performance today, value over the long term."
+            title="What we manage"
+            intro="Four areas of ownership, each run on its own terms. Choose one to see what we do and how."
           />
-
-          <div className={styles.sectorGrid}>
-            {sectors.map((sector, i) => (
-              <Reveal key={sector.id} delay={i * 100} variant="rise">
-                <Link
-                  to={`/portfolio#${sector.id}`}
-                  className={styles.sectorCard}
-                >
-                  <div className={styles.sectorImage}>
-                    <Figure src={sector.image} alt={sector.alt} />
-                  </div>
-                  <div className={styles.sectorBody}>
-                    <p className={styles.sectorLabel}>{sector.label}</p>
-                    <h3 className={styles.sectorTitle}>{sector.title}</h3>
-                    <p className={styles.sectorText}>{sector.summary}</p>
-                    <span className={styles.sectorLink}>
-                      Explore sector
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M3 8h10M9 4l4 4-4 4"
-                          stroke="currentColor"
-                          strokeWidth="1.4"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </span>
-                  </div>
+          <ol className={styles.index}>
+            {areas.map((area, i) => (
+              <Reveal as="li" key={area.to} delay={i * 80} className={styles.indexItem}>
+                <Link to={area.to} className={styles.indexRow}>
+                  <span className={`${styles.indexNo} figures`}>
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className={styles.indexName}>{area.label}</span>
+                  <span className={styles.indexLine}>{area.line}</span>
+                  <span className={styles.indexThumb} aria-hidden="true">
+                    <Figure src={area.image} alt="" />
+                  </span>
+                  <svg
+                    className={styles.indexArrow}
+                    width="22"
+                    height="22"
+                    viewBox="0 0 22 22"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M4 11h14M12 5l6 6-6 6"
+                      stroke="currentColor"
+                      strokeWidth="1.3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </Link>
               </Reveal>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Differentiators */}
-      <section className="section">
-        <div className="container">
-          <SectionHeading
-            eyebrow="Why Lexicon One"
-            title="Built to hold, not to trade"
-            intro="Three commitments that shape how every asset in the book is chosen and managed."
-          />
-          <div className={styles.diffGrid}>
-            {differentiators.map((item, i) => (
-              <Reveal
-                className={styles.diff}
-                key={item.title}
-                variant="rise"
-                delay={i * 100}
-              >
-                <div className={styles.diffImage}>
-                  <Figure src={item.image} alt={item.alt} />
-                </div>
-                <h3 className={styles.diffTitle}>{item.title}</h3>
-                <p className={styles.diffText}>{item.desc}</p>
-              </Reveal>
-            ))}
-          </div>
+          </ol>
         </div>
       </section>
 
       <ParallaxBand
         image="/images/bg-night.jpg"
         eyebrow="The thesis"
-        quote="Value compounds for owners who can wait for it."
+        quote="Value grows for owners who can wait for it."
         attribution="Lexicon One Enterprises — Innovate and Lead."
       />
 
-      {/* Approach */}
+      {/* How we work */}
       <section className="section">
         <div className="container">
           <SectionHeading
-            eyebrow="How we work"
-            title="From underwriting to appreciation"
-            intro="Every asset moves through the same three stages. The order is the discipline."
+            title="Assess, manage, grow"
+            intro="Every asset we own goes through the same three steps, in the same order."
           />
           <ProcessTrack items={approach} />
         </div>
@@ -194,18 +178,13 @@ export default function Home() {
               alt="Projector casting a beam of light in a darkened room"
             />
           </Reveal>
-          <Reveal className={styles.mediaBody} variant="right" delay={100}>
+          <Reveal className={styles.mediaBody} delay={100}>
             <p className={styles.eyebrowGold}>The media studio</p>
-            <h2 className={styles.mediaTitle}>Where finance meets content</h2>
+            <h2 className={styles.mediaTitle}>Where investment meets media</h2>
             <p className={styles.mediaText}>
-              Alongside its core operations, Lexicon One develops and scales
-              media projects across platforms — combining strategic investment
-              with creative execution.
-            </p>
-            <p className={styles.mediaText}>
-              The discipline that manages an asset can also build an audience.
-              Each project is underwritten with care, produced with intent, and
-              scaled with patience.
+              Alongside our core work, we invest in and produce series,
+              short-form video, podcasts, and brand partnerships, and stay
+              involved from first idea to release.
             </p>
             <Button to="/media" variant="light">
               Inside the studio

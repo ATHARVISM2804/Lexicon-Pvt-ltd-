@@ -4,73 +4,76 @@
 export const sectors = [
   {
     id: "financial",
+    art: "growth",
     label: "Financial holdings",
-    title: "Capital positioned with discipline",
+    title: "Capital, protected and grown",
     summary:
-      "Diversified financial holdings managed to preserve capital first and compound it steadily, reviewed on a cadence that favors evidence over reaction.",
-    body: "The financial book anchors the portfolio. Positions are selected for durability before yield and sized so that no single holding can rewrite the outcome. Conviction is expressed through allocation, not activity.",
+      "We invest in a diversified mix of financial assets, protecting capital first and then growing it steadily over time.",
+    body: "Financial holdings are the foundation of the portfolio. We choose investments for their strength before their returns, and size them so no single position can put the whole portfolio at risk. Every position is reviewed regularly against the facts, not market noise.",
     image: "/images/financial.jpg",
     alt: "Glass office tower facade in daylight",
     points: [
       {
         term: "Mandate",
-        desc: "Preserve capital, then compound it across market cycles.",
+        desc: "Protect capital first, then grow it through every market cycle.",
       },
       {
         term: "Approach",
-        desc: "Deliberate allocation and sizing, with active oversight of every position.",
+        desc: "Careful allocation and sizing, with every position actively reviewed.",
       },
       {
         term: "Horizon",
-        desc: "Long. Holdings are underwritten to be kept and sold on their merits.",
+        desc: "Long-term. We buy to hold, and sell only when an investment has done its job.",
       },
     ],
   },
   {
     id: "real-estate",
+    art: "tower",
     label: "Real estate",
-    title: "Property that produces twice",
+    title: "Property that earns and appreciates",
     summary:
-      "Real estate held for income while owned and appreciation when the market recognizes what the underwriting saw first.",
-    body: "Property rewards owners who read it completely — condition, market, tenancy, and second act. The firm acquires on fundamentals, manages hands-on, and repositions selectively where value sits unrealized.",
+      "We buy and manage residential and commercial property that produces income while we own it and gains value over time.",
+    body: "We look at every property in full: its condition, its location, its tenants, and what it could become. We buy on fundamentals, manage hands-on, and improve properties where we see value others have missed.",
     image: "/images/real-estate.jpg",
     alt: "Contemporary residence lit at dusk",
     points: [
       {
         term: "Mandate",
-        desc: "Own property that earns while held and appreciates over time.",
+        desc: "Own property that pays income and grows in value.",
       },
       {
         term: "Approach",
-        desc: "Fundamentals-led acquisition, hands-on management, selective repositioning.",
+        desc: "Buy on fundamentals, manage directly, and improve where it adds value.",
       },
       {
         term: "Horizon",
-        desc: "Measured in ownership rather than quarters.",
+        desc: "Measured in years of ownership, not quarters.",
       },
     ],
   },
   {
     id: "automotive",
+    art: "car",
     label: "Automotive",
-    title: "Assets built to move",
+    title: "Vehicles held as serious assets",
     summary:
-      "Automotive holdings stewarded with institutional discipline, from acquisition and documented condition through to timing.",
-    body: "Every vehicle is underwritten as an asset rather than an impulse. Provenance and condition are documented, storage and care are managed deliberately, and both entry and exit are timed against the market rather than sentiment.",
+      "We acquire and care for high-value vehicles as investments, from purchase and documented condition through to the right moment to sell.",
+    body: "Every vehicle is bought as an investment, never on impulse. We document its history and condition, store and maintain it properly, and time both the purchase and the sale against the market.",
     image: "/images/automotive.jpg",
     alt: "Performance sedan on an open road",
     points: [
       {
         term: "Mandate",
-        desc: "Treat automotive value with the same rigor as any other holding.",
+        desc: "Treat every vehicle with the same discipline as any other investment.",
       },
       {
         term: "Approach",
-        desc: "Documented provenance and condition, deliberate care, disciplined timing.",
+        desc: "Documented history and condition, expert care, and well-timed sales.",
       },
       {
         term: "Horizon",
-        desc: "As long as the asset merits — appreciation rewards owners who wait.",
+        desc: "As long as the vehicle keeps gaining value.",
       },
     ],
   },
@@ -79,37 +82,44 @@ export const sectors = [
 export const principles = [
   {
     title: "Sector fluency",
-    desc: "Each asset class has its own fundamentals. The firm does not manage what it has not learned to read.",
+    icon: "compass",
+    desc: "Each sector works differently. We only invest where we understand exactly how value is made.",
   },
   {
     title: "Discipline over impulse",
-    desc: "Positions are entered, held, and exited on their merits rather than on the mood of the market.",
+    icon: "shield",
+    desc: "We buy, hold, and sell on the facts of each asset, not on market headlines.",
   },
   {
     title: "Patient capital",
-    desc: "Long-term value compounds quietly. Good assets are given the one thing most managers cannot offer: time.",
+    icon: "hourglass",
+    desc: "Good assets need time to grow. We give them that time instead of chasing quick wins.",
   },
   {
-    title: "Plain-spoken candor",
-    desc: "Clear language about performance, risk, and intent. Partnerships work when both sides read the same page.",
+    title: "Straight talk",
+    icon: "chat",
+    desc: "We talk plainly about results, risks, and plans, so partners always know where they stand.",
   },
 ];
 
 export const approach = [
   {
     step: "01",
-    title: "Underwrite",
-    desc: "An asset enters the book only after a complete read of its condition, market, downside, and the story its numbers tell.",
+    title: "Assess",
+    icon: "search",
+    desc: "We study every asset in full before we buy: its condition, its market, its risks, and its numbers.",
   },
   {
     step: "02",
-    title: "Operate",
-    desc: "Active oversight sector by sector — optimizing income, cost, and positioning throughout the holding period.",
+    title: "Manage",
+    icon: "sliders",
+    desc: "We manage each asset hands-on while we own it, improving its income, costs, and position.",
   },
   {
     step: "03",
-    title: "Compound",
-    desc: "Proceeds are redeployed with the discipline that produced them, so value builds across the whole portfolio.",
+    title: "Grow",
+    icon: "growth",
+    desc: "We reinvest what we earn with the same care, so value keeps building across the portfolio.",
   },
 ];
 
@@ -117,16 +127,19 @@ export const mediaServices = [
   {
     step: "01",
     title: "Invest",
-    desc: "Strategic capital placed behind projects with a defined audience and a durable premise, underwritten like any other holding.",
+    icon: "briefcase",
+    desc: "We put capital behind media projects with a clear audience and lasting appeal.",
   },
   {
     step: "02",
     title: "Develop",
-    desc: "Creative execution from concept through production, with the firm engaged as a working partner rather than a passive check.",
+    icon: "film",
+    desc: "We work on the creative side too, from first idea through production, as a hands-on partner.",
   },
   {
     step: "03",
     title: "Scale",
-    desc: "Distribution across platforms, matched to where each project's audience already is and grown with patience.",
+    icon: "layers",
+    desc: "We release each project on the platforms where its audience already is, and grow it over time.",
   },
 ];

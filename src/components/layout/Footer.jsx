@@ -11,7 +11,11 @@ export default function Footer() {
         <div className={styles.grid}>
           <div className={styles.brandCol}>
             <Logo tone="light" />
-            <p className={styles.tagline}>{company.summary}</p>
+            <p className={styles.tagline}>
+              Private asset management in Deerfield, Illinois. Financial
+              holdings, real estate, and automotive assets, held for the long
+              term.
+            </p>
           </div>
 
           <nav className={styles.col} aria-label="Footer">
@@ -45,6 +49,9 @@ export default function Footer() {
           <span>
             © {new Date().getFullYear()} {company.name}. All rights reserved.
           </span>
+          <Link to="/privacy" className={styles.legalLink}>
+            Privacy
+          </Link>
           <span className={styles.motto}>{company.motto}</span>
         </div>
       </div>

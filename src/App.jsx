@@ -1,15 +1,18 @@
 import { useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { scrollToElement, startSmoothScroll } from "./lib/motion.js";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Header from "./components/layout/Header.jsx";
 import Footer from "./components/layout/Footer.jsx";
 import ScrollProgress from "./components/layout/ScrollProgress.jsx";
 import PageTransition from "./components/layout/PageTransition.jsx";
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
-import Leadership from "./pages/Leadership.jsx";
 import Portfolio from "./pages/Portfolio.jsx";
+import Sector from "./pages/Sector.jsx";
 import Media from "./pages/Media.jsx";
 import Contact from "./pages/Contact.jsx";
+import Privacy from "./pages/Privacy.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 /* Handles in-page anchors such as /portfolio#automotive. Resetting scroll
    on a plain route change is left to PageTransition, which does it behind
@@ -21,7 +24,7 @@ function HashScroll() {
     if (!hash) return undefined;
     const timer = window.setTimeout(() => {
       const el = document.querySelector(hash);
-      if (el) el.scrollIntoView({ block: "start", behavior: "smooth" });
+      if (el) scrollToElement(el);
     }, 560);
     return () => window.clearTimeout(timer);
   }, [pathname, hash]);
@@ -30,6 +33,8 @@ function HashScroll() {
 }
 
 export default function App() {
+  useEffect(() => startSmoothScroll(), []);
+
   return (
     <>
       <a className="skipLink" href="#main">
@@ -44,11 +49,13 @@ export default function App() {
             <Routes location={displayLocation}>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
-              <Route path="/leadership" element={<Leadership />} />
+              <Route path="/leadership" element={<Navigate to="/about#team" replace />} />
               <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/portfolio/:id" element={<Sector />} />
               <Route path="/media" element={<Media />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="*" element={<Home />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           )}
         </PageTransition>

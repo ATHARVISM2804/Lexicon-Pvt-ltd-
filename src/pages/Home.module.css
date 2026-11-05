@@ -15,204 +15,188 @@
 /* The italic conjunction in the hero headline. */
 .amp {
   font-style: italic;
+  font-weight: 300;
   color: var(--gold);
 }
 
-/* ------------------------------------------------------- introduction */
+/* ------------------------------------------------------ at a glance */
 
-.intro {
+/* Sits on the hero's lower edge, so the first scroll lands on facts. */
+.glance {
+  position: relative;
+  z-index: 2;
+  margin-top: clamp(-3.5rem, -5vw, -2rem);
+}
+
+/* -------------------------------------------------- founder letter */
+
+.letter {
   display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 8fr);
-  gap: 1.5rem 4rem;
-  margin-bottom: clamp(3rem, 6vw, 5rem);
-}
-
-.introLead {
-  font-family: var(--font-display);
-  font-size: var(--step-2);
-  font-weight: 300;
-  line-height: 1.4;
-  max-width: 32ch;
-  margin-bottom: 1.75rem;
-}
-
-.introText {
-  color: var(--slate-500);
-  max-width: 62ch;
-  margin: 0;
-}
-
-.factWrap {
-  margin-top: clamp(2rem, 4vw, 3rem);
-}
-
-/* --------------------------------------------------------- founder */
-
-.founder {
-  display: grid;
-  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
-  gap: clamp(2.5rem, 5vw, 5rem);
+  grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
   align-items: center;
 }
 
-.founderFigure {
+.letterFigure {
   overflow: hidden;
   border-radius: var(--radius);
-  max-width: 24rem;
+  max-width: 25rem;
 }
 
 /* The portrait is 440×600; keep its ratio so nothing is cropped. */
-.founderFigure > span {
+.letterFigure > span {
   height: auto;
   aspect-ratio: 11 / 15;
 }
 
-.founderFigure img {
+.letterFigure img {
   object-position: center top;
 }
 
-.founderName {
+.letterLead {
   font-family: var(--font-display);
   font-size: var(--step-3);
   font-weight: 300;
-  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  color: var(--navy-900);
+  max-width: 22ch;
+  margin-bottom: 1.75rem;
 }
 
-.founderText {
+.letterText {
   color: var(--slate-500);
-  max-width: 52ch;
-  margin-bottom: 2rem;
+  max-width: 54ch;
+  margin-bottom: 1.1rem;
 }
 
-/* ---------------------------------------------------- sector cards */
-
-.sectorGrid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(1.5rem, 2.5vw, 2.25rem);
-}
-
-.sectorCard {
+.signature {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  text-decoration: none;
-  color: inherit;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--paper);
-  transition: border-color 0.3s var(--ease), transform 0.35s var(--ease),
-    box-shadow 0.35s var(--ease);
+  gap: 0.2rem;
+  margin: 2rem 0 2.25rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--line);
+  max-width: 54ch;
 }
 
-.sectorCard:hover {
-  border-color: transparent;
-  transform: translateY(-6px);
-  box-shadow: 0 18px 40px -22px rgba(11, 31, 58, 0.45);
-}
-
-.sectorImage {
-  overflow: hidden;
-}
-
-.sectorImage > span {
-  height: 14rem;
-}
-
-.sectorImage img {
-  transition: transform 0.9s var(--ease), opacity 0.9s var(--ease);
-}
-
-.sectorCard:hover .sectorImage img {
-  transform: scale(1.06);
-}
-
-.sectorBody {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding: clamp(1.5rem, 2.5vw, 2rem);
-}
-
-.sectorLabel {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--gold-ink);
-  margin: 0 0 0.9rem;
-}
-
-.sectorTitle {
+.signName {
   font-family: var(--font-display);
-  font-size: var(--step-2);
-  font-weight: 300;
-  margin-bottom: 0.9rem;
-}
-
-.sectorText {
-  color: var(--slate-500);
-  font-size: 0.95rem;
-  margin-bottom: 1.5rem;
-}
-
-.sectorLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: auto;
-  font-size: 0.86rem;
-  font-weight: 600;
+  font-style: italic;
+  font-size: 1.9rem;
+  font-weight: 400;
+  line-height: 1.1;
   color: var(--navy-900);
 }
 
-.sectorLink svg {
-  transition: transform 0.3s var(--ease);
+.signRole {
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
 }
 
-.sectorCard:hover .sectorLink svg {
-  transform: translateX(5px);
+/* ----------------------------------------------- what we manage index */
+
+.index {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
 }
 
-/* -------------------------------------------------- differentiators */
+.indexItem {
+  border-bottom: 1px solid var(--line);
+}
 
-.diffGrid {
+.indexRow {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(1.75rem, 3vw, 2.75rem);
+  grid-template-columns: 4rem minmax(0, 4fr) minmax(0, 5fr) auto;
+  align-items: center;
+  gap: 1.5rem;
+  padding: clamp(1.6rem, 3vw, 2.4rem) 0.5rem;
+  text-decoration: none;
+  color: inherit;
 }
 
-.diffImage {
-  overflow: hidden;
-  border-radius: var(--radius);
-  margin-bottom: 1.6rem;
+/* Gold rule that sweeps across the row on hover. */
+.indexRow::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.7s var(--ease);
 }
 
-.diffImage > span {
-  height: 13rem;
+.indexRow:hover::after,
+.indexRow:focus-visible::after {
+  transform: scaleX(1);
 }
 
-.diffImage img {
-  transition: transform 0.9s var(--ease), opacity 0.9s var(--ease);
-}
-
-.diff:hover .diffImage img {
-  transform: scale(1.05);
-}
-
-.diffTitle {
+.indexNo {
   font-family: var(--font-display);
-  font-size: var(--step-2);
-  font-weight: 300;
-  margin-bottom: 0.85rem;
+  font-size: 1.15rem;
+  color: var(--gold-ink);
 }
 
-.diffText {
+.indexName {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  font-weight: 300;
+  line-height: 1.1;
+  transition: transform 0.5s var(--ease), color 0.3s var(--ease);
+}
+
+.indexRow:hover .indexName {
+  transform: translateX(0.6rem);
+  color: var(--navy-700);
+}
+
+.indexLine {
   color: var(--slate-500);
   font-size: 0.97rem;
-  margin: 0;
-  max-width: 40ch;
+  max-width: 44ch;
+}
+
+.indexArrow {
+  color: var(--navy-900);
+  transition: transform 0.4s var(--ease), color 0.3s var(--ease);
+}
+
+.indexRow:hover .indexArrow {
+  transform: translateX(6px);
+  color: var(--gold-ink);
+}
+
+/* Photograph that opens over the right of the row on hover (desktop). */
+.indexThumb {
+  position: absolute;
+  right: 4.5rem;
+  top: 50%;
+  width: 13rem;
+  height: 8.5rem;
+  overflow: hidden;
+  border-radius: var(--radius);
+  pointer-events: none;
+  clip-path: inset(50% 0 50% 0);
+  transform: translateY(-50%) scale(1.04);
+  transition: clip-path 0.7s var(--ease), transform 0.9s var(--ease);
+  z-index: 2;
+}
+
+.indexThumb > span {
+  height: 100%;
+}
+
+.indexRow:hover .indexThumb {
+  clip-path: inset(0 0 0 0);
+  transform: translateY(-50%) scale(1);
 }
 
 /* ----------------------------------------------------- media strip */
@@ -242,38 +226,48 @@
   font-family: var(--font-display);
   font-size: var(--step-3);
   font-weight: 300;
-  max-width: 14ch;
+  max-width: 18ch;
   margin-bottom: 1.5rem;
 }
 
 .mediaText {
   color: rgba(255, 255, 255, 0.75);
   max-width: 46ch;
-  margin-bottom: 1.1rem;
-}
-
-.mediaText:last-of-type {
   margin-bottom: 2rem;
 }
 
 /* ------------------------------------------------------ responsive */
 
 @media (max-width: 960px) {
-  .sectorGrid,
-  .diffGrid {
-    grid-template-columns: 1fr;
+  .indexRow {
+    grid-template-columns: 3rem minmax(0, 1fr) auto;
+    row-gap: 0.5rem;
   }
 
-  .sectorImage > span,
-  .diffImage > span {
-    height: 15rem;
+  .indexLine {
+    grid-column: 2 / 3;
+    grid-row: 2;
+  }
+
+  .indexArrow {
+    grid-column: 3;
+    grid-row: 1 / 3;
+  }
+
+  /* No hover on touch: the thumbnail would only flash on tap. */
+  .indexThumb {
+    display: none;
   }
 }
 
 @media (max-width: 860px) {
-  .intro,
-  .mediaInner,
-  .founder {
+  .letter,
+  .mediaInner {
     grid-template-columns: 1fr;
+  }
+
+  .glance {
+    margin-top: 0;
+    padding-top: 2.5rem;
   }
 }

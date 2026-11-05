@@ -21,7 +21,8 @@
   grid-column: span 2;
 }
 
-.tile:hover img {
+/* Doubled class outranks the reveal's settle-in transform. */
+.tile.tile:hover img {
   transform: scale(1.06);
 }
 

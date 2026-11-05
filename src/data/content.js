@@ -1,59 +1,33 @@
 /* Supporting content for the expanded sections.
    Nothing here asserts a figure, date, or name the firm has not published. */
 
-export const marqueeItems = [
-  "Financial holdings",
-  "Real estate",
-  "Automotive assets",
-  "Media projects",
-  "Long-term value",
-  "Deerfield, Illinois",
-];
-
 export const facts = [
-  { value: "Three", label: "Asset sectors" },
-  { value: "Deerfield, IL", label: "Headquarters" },
-  { value: "Long-term", label: "Investment horizon" },
-  { value: "In-house", label: "Media studio" },
-];
-
-export const differentiators = [
-  {
-    title: "Diversified by design",
-    desc: "Three uncorrelated sectors mean no single market decides the outcome. Each book is built to stand on its own.",
-    image: "/images/texture-facade.jpg",
-    alt: "Detail of a faceted building facade",
-  },
-  {
-    title: "Operators, not spectators",
-    desc: "The firm manages what it owns — property, positions, and vehicles are actively overseen rather than left to run.",
-    image: "/images/interior-lounge.jpg",
-    alt: "Light-filled contemporary interior",
-  },
-  {
-    title: "Patient by mandate",
-    desc: "Holdings are underwritten to be kept. Time is treated as an input to value rather than a cost to be minimized.",
-    image: "/images/stair-interior.jpg",
-    alt: "Sculptural staircase in a modern residence",
-  },
+  { value: "Jon Stewart", label: "Founder and President" },
+  { value: "Deerfield, Illinois", label: "Headquarters" },
+  { value: "Four", label: "Areas of ownership" },
+  { value: "Long-term", label: "How we hold" },
 ];
 
 export const criteria = [
   {
-    term: "Fundamentals first",
-    desc: "An asset must make sense on its own numbers before any thesis about the market is entertained.",
+    term: "Strong on its own",
+    icon: "search",
+    desc: "The asset has to make sense on its own numbers, whatever the market is doing.",
   },
   {
-    term: "Downside understood",
-    desc: "The loss case is written before the upside case. If it cannot be described plainly, the position is not taken.",
+    term: "Risks known upfront",
+    icon: "shield",
+    desc: "We work out what could go wrong before what could go right. If the risk is unclear, we pass.",
   },
   {
-    term: "Sized to survive",
-    desc: "No single holding is permitted to determine the outcome of the portfolio it sits in.",
+    term: "Sized sensibly",
+    icon: "scale",
+    desc: "No single asset is ever big enough to decide the fate of the whole portfolio.",
   },
   {
-    term: "A route to value",
-    desc: "Every acquisition arrives with a specific plan for how value is created, not merely a hope that it appears.",
+    term: "A clear plan for value",
+    icon: "growth",
+    desc: "Every purchase comes with a specific plan for how it will gain value, not just a hope.",
   },
 ];
 
@@ -93,37 +67,45 @@ export const galleryItems = [
 export const formats = [
   {
     title: "Long-form video",
-    desc: "Series and documentary work built for platforms where audiences commit real attention.",
+    icon: "film",
+    desc: "Series and documentaries for platforms where viewers watch for longer.",
   },
   {
     title: "Short-form and social",
-    desc: "Native vertical content that earns reach on its own merits rather than by paid distribution alone.",
+    icon: "phone",
+    desc: "Vertical videos made for social platforms that reach people on their own merit.",
   },
   {
     title: "Audio and podcast",
-    desc: "Conversation-led formats with low production overhead and durable back-catalogue value.",
+    icon: "mic",
+    desc: "Conversation-led shows that are efficient to make and keep their value over time.",
   },
   {
     title: "Branded partnerships",
-    desc: "Projects developed with commercial partners where the creative and the capital are agreed up front.",
+    icon: "handshake",
+    desc: "Projects made with brand partners, with the creative and the budget agreed upfront.",
   },
 ];
 
 export const faqs = [
   {
     q: "What does Lexicon One invest in?",
-    a: "The firm manages a diversified portfolio across three sectors: financial holdings, real estate, and automotive assets. It also develops and scales media projects through its in-house studio.",
+    a: "Financial holdings, real estate, and automotive assets, with a media studio alongside.",
   },
   {
     q: "How do I bring an opportunity to the firm?",
-    a: "Use the enquiry form on this page and select the sector it relates to. Include the essentials — what the asset is, where it is, and what stage the opportunity has reached.",
+    a: "Use the form above, choose the sector it relates to, and tell us what the asset is, where it is, and what stage it has reached.",
   },
   {
-    q: "Does the studio take unsolicited projects?",
-    a: "Yes. Media enquiries go through the same form; choose 'Media partnerships' as the subject and describe the project, its audience, and what stage it is at.",
+    q: "Are inquiries confidential?",
+    a: "Yes. Every inquiry is read by the firm and treated in confidence.",
+  },
+  {
+    q: "Does the studio take new projects?",
+    a: "Yes. Choose 'Media partnerships' as the subject and describe the project, its audience, and its stage.",
   },
   {
     q: "Where is the firm based?",
-    a: "Lexicon One Enterprises operates from 508 Mallard Lane, Deerfield, Illinois, north of Chicago.",
+    a: "508 Mallard Lane, Deerfield, Illinois, just north of Chicago.",
   },
 ];

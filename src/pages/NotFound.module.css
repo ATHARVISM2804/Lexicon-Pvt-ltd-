@@ -1,0 +1,48 @@
+.page {
+  display: grid;
+  align-items: center;
+  min-height: min(88vh, 820px);
+  padding-block: 9rem 5rem;
+  background: var(--navy-900);
+  color: var(--paper);
+}
+
+.inner {
+  text-align: center;
+}
+
+.mark {
+  width: 3.5rem;
+  height: 3.5rem;
+  color: var(--gold);
+}
+
+.code {
+  margin: 1.75rem 0 0.75rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--step-4);
+  font-weight: 300;
+  max-width: 18ch;
+  margin-inline: auto;
+}
+
+.text {
+  margin: 1.5rem auto 0;
+  max-width: 44ch;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}

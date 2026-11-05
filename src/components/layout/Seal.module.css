@@ -1,0 +1,48 @@
+.stroke {
+  fill: none;
+  stroke: var(--gold);
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transform: rotate(-90deg);
+  transform-origin: 32px 32px;
+  transition: stroke-dashoffset 1.8s cubic-bezier(0.65, 0, 0.35, 1);
+  transition-delay: calc(var(--i, 0) * 0.25s);
+}
+
+.text {
+  opacity: 0;
+  transition: opacity 1.2s ease 1.2s;
+}
+
+/* The monogram traces its outline, then fills with gold. */
+.mark {
+  fill: var(--gold);
+  fill-opacity: 0;
+  stroke: var(--gold);
+  stroke-width: 0.6;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.6s cubic-bezier(0.65, 0, 0.35, 1) 0.6s,
+    fill-opacity 0.9s ease 1.9s;
+}
+
+.drawn .stroke,
+.drawn .mark {
+  stroke-dashoffset: 0;
+}
+
+.drawn .mark {
+  fill-opacity: 1;
+}
+
+.drawn .text {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stroke,
+  .mark,
+  .text {
+    transition: none;
+  }
+}

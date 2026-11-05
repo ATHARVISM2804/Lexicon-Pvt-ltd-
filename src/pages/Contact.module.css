@@ -142,3 +142,19 @@
     padding: 0.5rem 0;
   }
 }
+
+.optional {
+  margin-left: 0.4rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--slate-400);
+}
+
+.honey {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}

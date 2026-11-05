@@ -38,7 +38,11 @@
 }
 
 @media (max-width: 520px) {
-  .strip {
-    grid-template-columns: 1fr;
+  .item {
+    padding: 1.25rem 1.1rem;
+  }
+
+  .value {
+    font-size: 1.4rem;
   }
 }

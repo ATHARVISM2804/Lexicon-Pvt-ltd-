@@ -1,6 +1,6 @@
+/* Real spaces sit between the inline-block masks (see SplitText.jsx), so
+   the heading's text reads correctly to search engines and copy-paste. */
 .split {
-  /* The masks are inline-block, so the space between words has to be
-     restored explicitly. */
   word-spacing: normal;
 }
 
@@ -9,11 +9,6 @@
   overflow: hidden;
   vertical-align: bottom;
   padding-bottom: 0.06em;
-}
-
-.mask::after {
-  content: " ";
-  white-space: pre;
 }
 
 .word {

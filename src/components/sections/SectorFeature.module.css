@@ -10,6 +10,40 @@
   margin-top: clamp(4.5rem, 9vw, 8rem);
 }
 
+/* Stacked cards (Portfolio, desktop): each feature pins under the header
+   and the next one slides up over it. */
+@media (min-width: 961px) {
+  .stack {
+    position: sticky;
+    top: 6.5rem;
+    background: var(--paper);
+    padding: clamp(2rem, 3vw, 3rem);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    transform-origin: 50% 0;
+    will-change: transform;
+  }
+
+  .stack::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    background: var(--paper);
+    border-radius: inherit;
+    opacity: var(--dim, 0);
+    pointer-events: none;
+  }
+
+  .stack + .stack {
+    margin-top: clamp(3rem, 6vw, 5rem);
+  }
+
+  .stack .figure > span {
+    height: clamp(18rem, 30vw, 26rem);
+  }
+}
+
 .flip .figure {
   order: 2;
 }
@@ -73,6 +107,20 @@
 
 .points {
   margin: 2.25rem 0 0;
+}
+
+.more {
+  display: inline-block;
+  margin-top: 1.75rem;
+  padding: 0.5rem 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--navy-900);
+  text-underline-offset: 0.3em;
+}
+
+.more:hover {
+  color: var(--gold-ink);
 }
 
 .point {

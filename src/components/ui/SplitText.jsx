@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import styles from "./SplitText.module.css";
 
 /* Reveals a headline word by word, each word rising out of its own mask.
@@ -60,14 +60,17 @@ export default function SplitText({
       aria-label={text}
     >
       {words.map((word, i) => (
-        <span className={styles.mask} key={`${word}-${i}`} aria-hidden="true">
-          <span
-            className={styles.word}
-            style={{ transitionDelay: `${delay + i * stagger}ms` }}
-          >
-            {word}
+        <Fragment key={`${word}-${i}`}>
+          {i > 0 ? " " : null}
+          <span className={styles.mask} aria-hidden="true">
+            <span
+              className={styles.word}
+              style={{ transitionDelay: `${delay + i * stagger}ms` }}
+            >
+              {word}
+            </span>
           </span>
-        </span>
+        </Fragment>
       ))}
     </Tag>
   );

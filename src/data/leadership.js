@@ -24,21 +24,3 @@ export const leadership = [
       "Leads brand and marketing across the firm and its media projects — how Lexicon One presents its work, how the studio's output finds an audience, and how the firm's voice stays consistent across every platform.",
   },
 ];
-
-export const governance = [
-  {
-    step: "01",
-    title: "One standard",
-    desc: "Every acquisition is measured the same way regardless of sector. The loss case is set out before the upside case, and a position that cannot be described plainly is not taken.",
-  },
-  {
-    step: "02",
-    title: "Ownership end to end",
-    desc: "An asset is not handed on once it has been bought. Whoever underwrites it operates it and answers for the exit.",
-  },
-  {
-    step: "03",
-    title: "Reporting",
-    desc: "Performance, risk, and intent are reported in plain language on a fixed schedule, including when the news is unwelcome.",
-  },
-];

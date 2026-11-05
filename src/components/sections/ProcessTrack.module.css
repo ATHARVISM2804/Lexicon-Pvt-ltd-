@@ -11,7 +11,31 @@
 .step {
   position: relative;
   padding-top: 2.25rem;
-  border-top: 1px solid var(--line);
+}
+
+/* The rule draws itself across as the step comes into view. */
+.step::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--line);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+
+.step[data-shown]::before {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step::before {
+    transform: none;
+    transition: none;
+  }
 }
 
 /* Gold node sitting on the rule, marking each stage. */
@@ -23,6 +47,20 @@
   height: 9px;
   border-radius: 50%;
   background: var(--gold);
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  margin-bottom: 1.4rem;
+  border: 1px solid var(--gold);
+  color: var(--gold-ink);
+}
+
+.dark .icon {
+  color: var(--gold);
 }
 
 .no {
@@ -47,8 +85,8 @@
 
 /* Dark variant for navy sections */
 
-.dark .step {
-  border-top-color: rgba(255, 255, 255, 0.18);
+.dark .step::before {
+  background: rgba(255, 255, 255, 0.18);
 }
 
 .dark .no {

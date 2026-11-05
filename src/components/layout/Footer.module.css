@@ -73,6 +73,16 @@
   color: rgba(255, 255, 255, 0.5);
 }
 
+.legalLink {
+  margin-left: auto;
+  color: rgba(255, 255, 255, 0.6);
+  text-underline-offset: 0.25em;
+}
+
+.legalLink:hover {
+  color: var(--gold);
+}
+
 .motto {
   font-family: var(--font-display);
   font-style: italic;

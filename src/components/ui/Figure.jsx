@@ -15,6 +15,10 @@ export default function Figure({
   const [loaded, setLoaded] = useState(false);
   const imgRef = useRef(null);
   const blur = placeholders[src];
+  // Every photograph in /images ships with a WebP twin beside the JPEG.
+  const webp = /^\/images\/.+\.jpg$/.test(src)
+    ? src.replace(/\.jpg$/, ".webp")
+    : null;
 
   // Covers the case where the browser has the image cached and fires load
   // before React attaches the handler.
@@ -27,17 +31,20 @@ export default function Figure({
       className={`${styles.figure} ${className}`}
       style={blur ? { backgroundImage: `url(${blur})` } : undefined}
     >
-      <img
-        ref={imgRef}
-        src={src}
-        alt={alt}
-        className={`${styles.img} ${loaded ? styles.loaded : ""}`}
-        loading={priority ? "eager" : "lazy"}
-        decoding={priority ? "sync" : "async"}
-        fetchPriority={priority ? "high" : "auto"}
-        onLoad={() => setLoaded(true)}
-        {...rest}
-      />
+      <picture className={styles.picture}>
+        {webp ? <source srcSet={webp} type="image/webp" /> : null}
+        <img
+          ref={imgRef}
+          src={src}
+          alt={alt}
+          className={`${styles.img} ${loaded ? styles.loaded : ""}`}
+          loading={priority ? "eager" : "lazy"}
+          decoding={priority ? "sync" : "async"}
+          fetchPriority={priority ? "high" : "auto"}
+          onLoad={() => setLoaded(true)}
+          {...rest}
+        />
+      </picture>
     </span>
   );
 }

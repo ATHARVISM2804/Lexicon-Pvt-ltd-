@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { nav } from "../../data/site.js";
+import { contact, nav } from "../../data/site.js";
 import Logo from "./Logo.jsx";
 import styles from "./Header.module.css";
 
@@ -49,6 +49,9 @@ export default function Header() {
               {item.label}
             </NavLink>
           ))}
+          <a className={styles.call} href={`tel:${contact.phoneHref}`}>
+            {contact.phoneDisplay}
+          </a>
         </nav>
 
         <button

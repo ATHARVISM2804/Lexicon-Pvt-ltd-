@@ -19,6 +19,11 @@
   transform: scale(1.06);
 }
 
+/* The picture wrapper must not take part in layout. */
+.picture {
+  display: contents;
+}
+
 .img {
   position: relative;
   z-index: 1;

@@ -16,27 +16,52 @@ export default function Contact() {
     `Reach Lexicon One Enterprises at ${contact.street}, ${contact.city}, ${contact.state} ${contact.zip} or ${contact.phoneDisplay}.`
   );
 
-  const [sent, setSent] = useState(false);
+  // idle | sending | sent | error
+  const [status, setStatus] = useState("idle");
 
-  const handleSubmit = (event) => {
+  /* Delivered to the firm's inbox through FormSubmit. If the service can't
+     be reached, fall back to the visitor's own email app so no inquiry is
+     lost. */
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const data = new FormData(form);
     const subject = `[${data.get("topic")}] Inquiry from ${data.get("name")}`;
-    const body = `${data.get("message")}\n\n—\n${data.get("name")}\n${data.get(
-      "email"
-    )}`;
-    window.location.href = `mailto:${contact.email}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-    setSent(true);
+    setStatus("sending");
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${contact.email}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: subject,
+          _template: "table",
+          _captcha: "false",
+          _honey: data.get("_honey") || "",
+          Name: data.get("name"),
+          Email: data.get("email"),
+          Subject: data.get("topic"),
+          "Introduced by": data.get("referral") || "—",
+          Message: data.get("message"),
+        }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      form.reset();
+      setStatus("sent");
+    } catch {
+      const body = `${data.get("message")}\n\n—\n${data.get("name")}\n${data.get("email")}`;
+      window.location.href = `mailto:${contact.email}?subject=${encodeURIComponent(
+        subject
+      )}&body=${encodeURIComponent(body)}`;
+      setStatus("error");
+    }
   };
 
   return (
     <>
       <Hero
         eyebrow="Contact"
-        title="Start a conversation"
-        lede="Questions about the portfolio, the media studio, or the firm itself are all welcome."
+        title="Private inquiries"
+        lede="Call us, write to us, or use the form below. Every inquiry is read by the firm and treated in confidence."
         image="/images/boardroom.jpg"
       />
 
@@ -62,10 +87,9 @@ export default function Contact() {
             </div>
 
             <div className={styles.card}>
-              <h2 className={styles.cardTitle}>Written inquiries</h2>
+              <h2 className={styles.cardTitle}>Email</h2>
               <p className={styles.cardText}>
-                Use the form and your message reaches the firm directly. Every
-                inquiry receives a considered reply.
+                <a href={`mailto:${contact.email}`}>{contact.email}</a>
               </p>
             </div>
 
@@ -114,16 +138,37 @@ export default function Contact() {
               </div>
 
               <div className={styles.field}>
+                <label htmlFor="cf-referral">
+                  How were you introduced to us? <span className={styles.optional}>Optional</span>
+                </label>
+                <input id="cf-referral" name="referral" type="text" />
+              </div>
+
+              <div className={styles.field}>
                 <label htmlFor="cf-message">Message</label>
                 <textarea id="cf-message" name="message" rows="6" required />
               </div>
 
-              <Button type="submit">Send message</Button>
+              {/* Spam trap: hidden from people, filled in by bots. */}
+              <input
+                type="text"
+                name="_honey"
+                className={styles.honey}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+              />
+
+              <Button type="submit" disabled={status === "sending"}>
+                {status === "sending" ? "Sending…" : "Send inquiry"}
+              </Button>
 
               <p className={styles.note} role="status">
-                {sent
-                  ? "Your email client should now be open with the message ready to send."
-                  : "Submitting opens your email client with the message prepared and addressed."}
+                {status === "sent"
+                  ? "Thank you. Your inquiry has been received and will be treated in confidence."
+                  : status === "error"
+                  ? "We couldn't send that just now, so your email app has opened with the message ready to send."
+                  : "Your inquiry goes directly to the firm and is treated in confidence."}
               </p>
             </form>
           </Reveal>
