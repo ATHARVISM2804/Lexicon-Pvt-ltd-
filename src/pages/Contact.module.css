@@ -136,10 +136,19 @@
   }
 }
 
+/* Phones: telephone and email become full-width tap targets. */
 @media (max-width: 860px) {
   .cardText a {
-    display: inline-block;
-    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--navy-900);
+    border-radius: var(--radius);
+    font-weight: 600;
+    text-decoration: none;
+    word-break: break-all;
   }
 }
 

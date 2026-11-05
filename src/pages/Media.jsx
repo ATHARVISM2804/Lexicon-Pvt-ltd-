@@ -1,7 +1,9 @@
+import { useRef } from "react";
 import { mediaServices } from "../data/sectors.js";
 import { formats } from "../data/content.js";
 import Hero from "../components/sections/Hero.jsx";
 import SectionHeading from "../components/ui/SectionHeading.jsx";
+import SwipeDots from "../components/ui/SwipeDots.jsx";
 import Reveal from "../components/ui/Reveal.jsx";
 import Icon from "../components/ui/Icon.jsx";
 import LineArt from "../components/ui/LineArt.jsx";
@@ -11,9 +13,10 @@ import usePageMeta from "../hooks/usePageMeta.js";
 import styles from "./Media.module.css";
 
 export default function Media() {
+  const formatsRef = useRef(null);
   usePageMeta(
     "Media Studio — Lexicon One Enterprises",
-    "Lexicon One develops and scales media projects across platforms, combining strategic investment with creative execution."
+    "Lexicon One develops and scales media projects across platforms, combining strategic investment with creative execution.",
   );
 
   return (
@@ -22,7 +25,8 @@ export default function Media() {
         eyebrow="The media studio"
         title="Investment and media, under one roof"
         lede="Our media studio invests in and produces projects across video, social, and audio, with the same care we bring to every other asset."
-        image="/images/media.jpg"
+        image="/images/loop-crown-poster.jpg"
+        video="/video/loop-crown.mp4"
       />
 
       {/* Services */}
@@ -45,13 +49,9 @@ export default function Media() {
             title="Where the work lives"
             intro="We work across formats and choose the one that suits each audience best."
           />
-          <div className={styles.formatGrid}>
+          <div className={`${styles.formatGrid} swipe-row`} ref={formatsRef}>
             {formats.map((item, i) => (
-              <Reveal
-                className={styles.format}
-                key={item.title}
-                delay={i * 80}
-              >
+              <Reveal className={styles.format} key={item.title} delay={i * 80}>
                 <span className={styles.formatIcon}>
                   <Icon name={item.icon} size={26} />
                 </span>
@@ -60,6 +60,11 @@ export default function Media() {
               </Reveal>
             ))}
           </div>
+          <SwipeDots
+            targetRef={formatsRef}
+            count={formats.length}
+            label="Format"
+          />
         </div>
       </section>
 
@@ -69,7 +74,9 @@ export default function Media() {
           <LineArt name="iris" className={styles.standardArt} />
           <Reveal className={styles.standardBody} variant="right" delay={100}>
             <p className={styles.eyebrowGold}>The standard</p>
-            <h2 className={styles.standardTitle}>Two questions, one decision</h2>
+            <h2 className={styles.standardTitle}>
+              Two questions, one decision
+            </h2>
             <p className={styles.standardText}>
               Every project has to pass two tests: is the idea good enough to
               find an audience, and is it a sound use of capital? We go ahead

@@ -92,6 +92,13 @@
   }
 }
 
+/* Phones: tiles become swipe cards (see .swipe-row) with a fixed height. */
+@media (max-width: 860px) {
+  .tile {
+    height: 16rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .tile img,
   .caption,

@@ -13,7 +13,7 @@ export default function Logo({ tone = "dark" }) {
       </svg>
       <span className={styles.rule} aria-hidden="true" />
       <span className={styles.words}>
-        <span className={styles.name}>Lexicon</span>
+        <span className={styles.name}>Lexicon</span>{" "}
         <span className={styles.sub}>One Enterprises</span>
       </span>
     </span>

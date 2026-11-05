@@ -59,7 +59,8 @@ export default function Portfolio() {
         eyebrow="The portfolio"
         title="What we own and manage"
         lede="Financial holdings, real estate, and automotive assets: three sectors, each managed on its own terms for long-term value."
-        image="/images/portfolio-hero.jpg"
+        image="/images/loop-city-poster.jpg"
+        video="/video/loop-city.mp4"
       />
 
       <section className={`section ${styles.features}`}>

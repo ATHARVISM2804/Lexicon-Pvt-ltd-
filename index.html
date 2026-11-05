@@ -28,6 +28,31 @@
       type="image/svg+xml"
       href="/favicon.svg"
     />
+    <script>
+      // Inner pages: start the banner photo download before the app loads.
+      (function () {
+        var heroes = {
+          "/about": "bg-rotunda",
+          "/portfolio": "loop-city-poster",
+          "/portfolio/financial": "financial",
+          "/portfolio/real-estate": "real-estate",
+          "/portfolio/automotive": "automotive",
+          "/media": "loop-crown-poster",
+          "/contact": "boardroom",
+          "/privacy": "bg-street"
+        };
+        var name = heroes[location.pathname.replace(/\/$/, "")];
+        if (!name) return;
+        var l = document.createElement("link");
+        l.rel = "preload";
+        l.as = "image";
+        l.type = "image/webp";
+        l.setAttribute("fetchpriority", "high");
+        l.setAttribute("imagesrcset", "/images/" + name + "-640.webp 640w, /images/" + name + "-1080.webp 1080w");
+        l.setAttribute("imagesizes", "100vw");
+        document.head.appendChild(l);
+      })();
+    </script>
     <link rel="preload" as="image" href="/images/lexicon-film-poster-portrait.webp" type="image/webp" media="(max-width: 860px)" fetchpriority="high" />
     <link rel="preload" as="image" href="/images/lexicon-film-poster.webp" type="image/webp" media="(min-width: 861px)" fetchpriority="high" />
     <link rel="preload" href="/fonts/cormorant-garamond.woff2" as="font" type="font/woff2" crossorigin />

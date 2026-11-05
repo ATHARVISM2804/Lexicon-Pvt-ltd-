@@ -285,9 +285,43 @@
   }
 }
 
-@media (max-width: 480px) {
+/* Phones: portrait beside the name and title, the remit and phone full
+   width beneath, so no portrait sits beside an empty gap. */
+@media (max-width: 600px) {
   .card {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+    gap: 0 1.1rem;
+    align-items: end;
+  }
+
+  .portrait {
+    grid-row: 1 / span 2;
+    width: 6.5rem;
+  }
+
+  .body {
+    display: contents;
+  }
+
+  .name {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: end;
+  }
+
+  .role {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+    margin-bottom: 0;
+  }
+
+  .remit,
+  .phone {
+    grid-column: 1 / -1;
+  }
+
+  .remit {
+    margin-top: 1.25rem;
   }
 }

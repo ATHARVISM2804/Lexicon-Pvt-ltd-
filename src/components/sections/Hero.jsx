@@ -136,7 +136,6 @@ export default function Hero({
               <video
                 ref={videoRef}
                 className={styles.video}
-                poster={poster}
                 autoPlay
                 muted
                 loop

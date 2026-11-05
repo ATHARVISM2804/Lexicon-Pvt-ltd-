@@ -47,7 +47,7 @@ export default function LoopVideo({ src, poster, sizes = "100vw", className = ""
     <span ref={wrapRef} className={`${styles.wrap} ${className}`}>
       <Figure src={poster} alt="" sizes={sizes} />
       {load ? (
-        <video ref={videoRef} className={styles.video} poster={poster} autoPlay muted loop playsInline>
+        <video ref={videoRef} className={styles.video} autoPlay muted loop playsInline>
           <source src={src.replace(/\.mp4$/, ".hevc.mp4")} type='video/mp4; codecs="hvc1"' />
           <source src={src} type="video/mp4" />
         </video>

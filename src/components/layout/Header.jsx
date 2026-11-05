@@ -32,7 +32,7 @@ export default function Header() {
   return (
     <header className={`${styles.header} ${solid ? styles.solid : ""}`}>
       <div className={`container ${styles.inner}`}>
-        <Link to="/" className={styles.brand} aria-label="Lexicon One Enterprises, home">
+        <Link to="/" className={styles.brand}>
           <Logo tone={solid ? "dark" : "light"} />
         </Link>
 

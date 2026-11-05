@@ -1,7 +1,9 @@
+import { useRef } from "react";
 import { principles } from "../data/sectors.js";
 import { leadership } from "../data/leadership.js";
 import Hero from "../components/sections/Hero.jsx";
 import SectionHeading from "../components/ui/SectionHeading.jsx";
+import SwipeDots from "../components/ui/SwipeDots.jsx";
 import Reveal from "../components/ui/Reveal.jsx";
 import Figure from "../components/ui/Figure.jsx";
 import Icon from "../components/ui/Icon.jsx";
@@ -10,9 +12,10 @@ import usePageMeta from "../hooks/usePageMeta.js";
 import styles from "./About.module.css";
 
 export default function About() {
+  const principlesRef = useRef(null);
   usePageMeta(
     "About — Lexicon One Enterprises",
-    "Lexicon One Enterprises is an asset management firm in Deerfield, Illinois, managing financial holdings, real estate, and automotive assets for long-term value."
+    "Lexicon One Enterprises is an asset management firm in Deerfield, Illinois, managing financial holdings, real estate, and automotive assets for long-term value.",
   );
 
   return (
@@ -70,7 +73,11 @@ export default function About() {
               >
                 <div className={styles.portrait}>
                   {person.portrait ? (
-                    <Figure src={person.portrait} alt={person.name} sizes="180px" />
+                    <Figure
+                      src={person.portrait}
+                      alt={person.name}
+                      sizes="180px"
+                    />
                   ) : (
                     <span className={styles.monogram} aria-hidden="true">
                       {person.initials}
@@ -151,7 +158,10 @@ export default function About() {
             title="What guides every decision"
             intro="Four principles behind how we invest, manage, and report."
           />
-          <div className={styles.principleGrid}>
+          <div
+            className={`${styles.principleGrid} swipe-row`}
+            ref={principlesRef}
+          >
             {principles.map((item, i) => (
               <Reveal
                 className={styles.principle}
@@ -167,6 +177,11 @@ export default function About() {
               </Reveal>
             ))}
           </div>
+          <SwipeDots
+            targetRef={principlesRef}
+            count={principles.length}
+            label="Principle"
+          />
         </div>
       </section>
 
@@ -174,7 +189,11 @@ export default function About() {
       <section className="section sectionTint">
         <div className={`container ${styles.placeInner}`}>
           <Reveal className={styles.placeFigure} variant="wipe">
-            <Figure src="/images/chicago.jpg" alt="The Chicago skyline" sizes="(max-width: 860px) 100vw, 50vw" />
+            <Figure
+              src="/images/chicago.jpg"
+              alt="The Chicago skyline"
+              sizes="(max-width: 860px) 100vw, 50vw"
+            />
           </Reveal>
           <Reveal className={styles.placeBody} variant="right" delay={100}>
             <p className={styles.eyebrow}>Where we work</p>
