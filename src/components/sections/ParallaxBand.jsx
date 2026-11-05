@@ -1,6 +1,7 @@
 import useParallax from "../../hooks/useParallax.js";
 import Reveal from "../ui/Reveal.jsx";
 import Figure from "../ui/Figure.jsx";
+import LoopVideo from "../ui/LoopVideo.jsx";
 import styles from "./ParallaxBand.module.css";
 
 /* A full-bleed statement over a drifting photograph. Used sparingly —
@@ -10,6 +11,7 @@ export default function ParallaxBand({
   quote,
   attribution,
   image,
+  video,
   children,
 }) {
   const parallaxRef = useParallax(0.22, 0.18);
@@ -18,7 +20,7 @@ export default function ParallaxBand({
     <section className={styles.band}>
       <div className={styles.media} aria-hidden="true">
         <div className={styles.mediaInner} ref={parallaxRef}>
-          <Figure src={image} alt="" />
+          {video ? <LoopVideo src={video} poster={image} /> : <Figure src={image} alt="" />}
         </div>
         <div className={styles.scrim} />
       </div>

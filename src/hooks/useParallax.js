@@ -12,7 +12,8 @@ export default function useParallax(strength = 0.18, buffer = 0.18) {
 
   useEffect(() => {
     const el = ref.current;
-    if (!el || reduced) return undefined;
+    // Touch screens skip it: parallax judders against native touch scrolling.
+    if (!el || reduced || !window.matchMedia("(pointer: fine)").matches) return undefined;
 
     let visible = false;
     let frame = 0;

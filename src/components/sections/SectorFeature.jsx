@@ -13,7 +13,7 @@ export default function SectorFeature({ sector, index, flip, href, detail, stack
       id={sector.id}
     >
       <Reveal className={styles.figure}>
-        <Figure src={sector.image} alt={sector.alt} />
+        <Figure src={sector.image} alt={sector.alt} sizes="(max-width: 960px) 100vw, 45vw" />
       </Reveal>
 
       <Reveal className={styles.body} delay={100}>

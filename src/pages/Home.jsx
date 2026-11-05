@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { company } from "../data/site.js";
 import { sectors, approach } from "../data/sectors.js";
@@ -7,6 +8,8 @@ import Button from "../components/ui/Button.jsx";
 import Reveal from "../components/ui/Reveal.jsx";
 import Figure from "../components/ui/Figure.jsx";
 import SectionHeading from "../components/ui/SectionHeading.jsx";
+import SwipeDots from "../components/ui/SwipeDots.jsx";
+import LoopVideo from "../components/ui/LoopVideo.jsx";
 import Hero from "../components/sections/Hero.jsx";
 import FactStrip from "../components/sections/FactStrip.jsx";
 import ParallaxBand from "../components/sections/ParallaxBand.jsx";
@@ -38,6 +41,7 @@ const areas = [
 
 export default function Home() {
   usePageMeta("Lexicon One Enterprises — Asset Management", company.summary);
+  const indexRef = useRef(null);
 
   return (
     <>
@@ -50,9 +54,10 @@ export default function Home() {
           </>
         }
         lede="Lexicon One Enterprises acquires, manages, and grows financial holdings, real estate, and automotive assets for the long term."
-        image="/images/hero-tower-poster.jpg"
-        video="/video/hero-tower.mp4"
-        videoSmall="/video/hero-tower-mobile.mp4"
+        image="/images/lexicon-film-poster.jpg"
+        video="/video/lexicon-film-v2.mp4"
+        videoSmall="/video/lexicon-film-v2-portrait.mp4"
+        posterSmall="/images/lexicon-film-poster-portrait.jpg"
         actions={
           <>
             <Button to="/portfolio" variant="light">
@@ -79,6 +84,7 @@ export default function Home() {
         <div className={`container ${styles.letter}`}>
           <Reveal className={styles.letterFigure} variant="wipe">
             <Figure
+              sizes="(max-width: 860px) 60vw, 400px"
               src={founder.portrait}
               alt={`${founder.name}, ${founder.role} of Lexicon One Enterprises`}
             />
@@ -116,7 +122,7 @@ export default function Home() {
             title="What we manage"
             intro="Four areas of ownership, each run on its own terms. Choose one to see what we do and how."
           />
-          <ol className={styles.index}>
+          <ol className={styles.index} ref={indexRef}>
             {areas.map((area, i) => (
               <Reveal as="li" key={area.to} delay={i * 80} className={styles.indexItem}>
                 <Link to={area.to} className={styles.indexRow}>
@@ -126,7 +132,7 @@ export default function Home() {
                   <span className={styles.indexName}>{area.label}</span>
                   <span className={styles.indexLine}>{area.line}</span>
                   <span className={styles.indexThumb} aria-hidden="true">
-                    <Figure src={area.image} alt="" />
+                    <Figure src={area.image} alt="" sizes="(max-width: 960px) 80vw, 220px" />
                   </span>
                   <svg
                     className={styles.indexArrow}
@@ -148,11 +154,13 @@ export default function Home() {
               </Reveal>
             ))}
           </ol>
+          <SwipeDots targetRef={indexRef} count={areas.length} label="Area" />
         </div>
       </section>
 
       <ParallaxBand
-        image="/images/bg-night.jpg"
+        image="/images/loop-city-poster.jpg"
+        video="/video/loop-city.mp4"
         eyebrow="The thesis"
         quote="Value grows for owners who can wait for it."
         attribution="Lexicon One Enterprises — Innovate and Lead."
@@ -173,9 +181,10 @@ export default function Home() {
       <section className={`section ${styles.mediaBand}`}>
         <div className={`container ${styles.mediaInner}`}>
           <Reveal className={styles.mediaFigure} variant="wipe">
-            <Figure
-              src="/images/media.jpg"
-              alt="Projector casting a beam of light in a darkened room"
+            <LoopVideo
+              src="/video/loop-crown.mp4"
+              poster="/images/loop-crown-poster.jpg"
+              sizes="(max-width: 860px) 100vw, 45vw"
             />
           </Reveal>
           <Reveal className={styles.mediaBody} delay={100}>

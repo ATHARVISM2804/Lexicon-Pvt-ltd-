@@ -94,7 +94,7 @@ export default function Contact() {
             </div>
 
             <div className={styles.officeFigure}>
-              <Figure src="/images/office.jpg" alt="The firm's office interior" />
+              <Figure src="/images/office.jpg" alt="The firm's office interior" sizes="(max-width: 860px) 100vw, 30vw" />
             </div>
           </Reveal>
 

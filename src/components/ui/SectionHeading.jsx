@@ -11,7 +11,10 @@ export default function SectionHeading({ eyebrow, title, intro, align }) {
         </Reveal>
       ) : null}
       <div className={styles.row}>
-        <SplitText as="h2" text={title} className={styles.title} />
+        <div>
+          <SplitText as="h2" text={title} className={styles.title} />
+          <Reveal as="span" className={styles.rule} variant="fade" delay={350} aria-hidden="true" />
+        </div>
         {intro ? (
           <Reveal as="p" className={styles.intro} delay={140}>
             {intro}

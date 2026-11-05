@@ -66,7 +66,7 @@ export default function Sector() {
               <Reveal key={s.id} delay={i * 100} variant="rise">
                 <Link to={`/portfolio/${s.id}`} className={styles.card}>
                   <span className={styles.image}>
-                    <Figure src={s.image} alt={s.alt} />
+                    <Figure src={s.image} alt={s.alt} sizes="(max-width: 760px) 40vw, 20vw" />
                   </span>
                   <span className={styles.body}>
                     <span className={styles.label}>{s.label}</span>

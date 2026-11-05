@@ -1,0 +1,32 @@
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.15rem;
+  margin-top: 1.25rem;
+}
+
+/* 44px tap area around a small visible bar. */
+.dot {
+  position: relative;
+  width: 28px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.dot::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 50%;
+  height: 2px;
+  background: rgba(11, 31, 58, 0.18);
+  transition: background-color 0.3s ease;
+}
+
+.active::after {
+  background: var(--gold);
+}

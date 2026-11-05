@@ -70,7 +70,7 @@ export default function About() {
               >
                 <div className={styles.portrait}>
                   {person.portrait ? (
-                    <Figure src={person.portrait} alt={person.name} />
+                    <Figure src={person.portrait} alt={person.name} sizes="180px" />
                   ) : (
                     <span className={styles.monogram} aria-hidden="true">
                       {person.initials}
@@ -174,7 +174,7 @@ export default function About() {
       <section className="section sectionTint">
         <div className={`container ${styles.placeInner}`}>
           <Reveal className={styles.placeFigure} variant="wipe">
-            <Figure src="/images/chicago.jpg" alt="The Chicago skyline" />
+            <Figure src="/images/chicago.jpg" alt="The Chicago skyline" sizes="(max-width: 860px) 100vw, 50vw" />
           </Reveal>
           <Reveal className={styles.placeBody} variant="right" delay={100}>
             <p className={styles.eyebrow}>Where we work</p>

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { sectors } from "../data/sectors.js";
-import { gsap, prefersReducedMotion } from "../lib/motion.js";
+import { isDesktopPointer, prefersReducedMotion } from "../lib/scroll.js";
 import { criteria, galleryItems } from "../data/content.js";
 import Hero from "../components/sections/Hero.jsx";
 import SectionHeading from "../components/ui/SectionHeading.jsx";
@@ -22,27 +22,35 @@ export default function Portfolio() {
 
   /* As each card arrives, the one beneath it eases back and dims. */
   useEffect(() => {
-    if (prefersReducedMotion()) return undefined;
-    const mm = gsap.matchMedia();
-    mm.add("(min-width: 961px)", () => {
-      const cards = gsap.utils.toArray("article", stackRef.current);
-      cards.slice(0, -1).forEach((card, i) => {
-        const scrollTrigger = {
-          trigger: cards[i + 1],
-          start: "top bottom",
-          end: "top 6.5rem",
-          scrub: true,
-        };
-        // Scale the card and raise a paper veil over it (see --dim in
-        // SectorFeature.module.css); the card itself stays opaque.
-        gsap.fromTo(
-          card,
-          { scale: 1, "--dim": 0 },
-          { scale: 0.94, "--dim": 0.65, ease: "none", scrollTrigger }
-        );
+    if (prefersReducedMotion() || !isDesktopPointer()) return undefined;
+    let mm;
+    let cancelled = false;
+    import("../lib/motion.js").then(({ gsap }) => {
+      if (cancelled) return;
+      mm = gsap.matchMedia();
+      mm.add("(min-width: 961px)", () => {
+        const cards = gsap.utils.toArray("article", stackRef.current);
+        cards.slice(0, -1).forEach((card, i) => {
+          const scrollTrigger = {
+            trigger: cards[i + 1],
+            start: "top bottom",
+            end: "top 6.5rem",
+            scrub: true,
+          };
+          // Scale the card and raise a paper veil over it (see --dim in
+          // SectorFeature.module.css); the card itself stays opaque.
+          gsap.fromTo(
+            card,
+            { scale: 1, "--dim": 0 },
+            { scale: 0.94, "--dim": 0.65, ease: "none", scrollTrigger }
+          );
+        });
       });
     });
-    return () => mm.revert();
+    return () => {
+      cancelled = true;
+      mm?.revert();
+    };
   }, []);
 
   return (

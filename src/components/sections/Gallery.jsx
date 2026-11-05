@@ -14,7 +14,7 @@ export default function Gallery({ items }) {
           delay={i * 80}
           key={item.src}
         >
-          <Figure src={item.src} alt={item.alt} />
+          <Figure src={item.src} alt={item.alt} sizes="(max-width: 900px) 50vw, 33vw" />
           <span className={styles.veil} aria-hidden="true" />
           <span className={styles.caption}>{item.caption}</span>
         </Reveal>

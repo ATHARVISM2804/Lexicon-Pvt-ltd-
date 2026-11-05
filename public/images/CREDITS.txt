@@ -31,6 +31,6 @@ See CONTENT-CHECKLIST.md — several of these must be replaced with the
 firm's own properties, vehicles, and premises before launch.
 
 -- Generated --
-hero-tower-poster.jpg     still from /video/hero-tower.mp4
-/video/hero-tower*.mp4    generated with Google Flow (Veo), November 2026
+lexicon-film-poster*.jpg  stills from /video/lexicon-film*.mp4
+/video/lexicon-film*.mp4  3 shots generated with Google Flow (Veo), edited into a 24s loop, Nov 2026
 /og-image.jpg             share card composed from the hero video still
